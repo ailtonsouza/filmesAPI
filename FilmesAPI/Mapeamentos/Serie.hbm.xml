@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="FilmesAPI" namespace="FilmesAPI.Entidades">
+    <class name="Serie">
+        <id name="Id">
+            <generator class="identity"/>
+        </id>
+        <property name="Titulo" not-null="true"/>
+ 
+        <bag name="Temporadas" fetch="join">
+            <key column="SerieId" />
+            <one-to-many class="Temporada"/>
+        </bag>
+
+        <bag name="Genero" table="SeriesGeneros">
+            <key column="SerieId" />
+            <many-to-many class="Genero" column="generoId"/>
+        </bag>
+
+
+    </class>
+</hibernate-mapping>

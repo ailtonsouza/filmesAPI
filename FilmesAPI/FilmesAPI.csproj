@@ -17,4 +17,25 @@
       <Folder Include="DTOs" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Remove="Mapeamentos\Ator.hbm.xml" />
+      <EmbeddedResource Include="Mapeamentos\Ator.hbm.xml" />
+      <None Remove="Mapeamentos\Diretor.hbm.xml" />
+      <EmbeddedResource Include="Mapeamentos\Diretor.hbm.xml" />
+      <None Remove="Mapeamentos\Filme.hbm.xml" />
+      <EmbeddedResource Include="Mapeamentos\Filme.hbm.xml" />
+      <None Remove="Mapeamentos\Genero.hbm.xml" />
+      <EmbeddedResource Include="Mapeamentos\Genero.hbm.xml" />
+      <None Remove="Mapeamentos\Oscar.hbm.xml" />
+      <EmbeddedResource Include="Mapeamentos\Oscar.hbm.xml" />
+      <None Remove="Mapeamentos\Serie.hbm.xml" />
+      <EmbeddedResource Include="Mapeamentos\Serie.hbm.xml" />
+      <None Remove="Mapeamentos\Temporada.hbm.xml" />
+      <EmbeddedResource Include="Mapeamentos\Temporada.hbm.xml" />
+      <None Remove="hibernate.cfg.xml" />
+      <Content Include="hibernate.cfg.xml">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+    </ItemGroup>
+
 </Project>

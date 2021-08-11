@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="FilmesAPI" namespace="FilmesAPI.Entidades">
+    <class name="Filme">
+        <id name="Id">
+            <generator class="identity"/>
+        </id>
+        <property name="Titulo" not-null="true"/>
+        <property name="Duracao" not-null="true"/>
+
+        <bag name="Diretor" table="FilmesDiretores" cascade="save-update">
+            <key column="FilmeId" />
+            <many-to-many class="Diretor" column="diretorId"/>
+        </bag>
+
+        <bag name="Ator" table="FilmesAtores" cascade="save-update">
+            <key column="FilmeId" />
+            <many-to-many class="Ator" column="atorId"/>
+        </bag>
+
+        <bag name="Genero" table="FilmesGeneros" cascade="save-update" >
+            <key column="FilmeId" />
+            <many-to-many class="Genero" column="generoId"/>
+        </bag>
+
+        <bag name="Oscar" fetch="join">
+            <key column="FilmeId" />
+            <one-to-many class="Oscar"/>
+        </bag>
+
+
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="FilmesAPI" namespace="FilmesAPI.Entidades">
+    <class name="Ator">
+        <id name="Id">
+            <generator class="identity"/>
+        </id>
+        <property name="NomeCompleto" not-null="true"/>
+        <property name="DataNascimento" not-null="true"/>
+
+        <bag name="Filmes" table="FilmesAtores">
+            <key column="AtorId" />
+            <many-to-many class="Filme" column="filmeId"/>
+        </bag>
+
+    </class>
+</hibernate-mapping>
