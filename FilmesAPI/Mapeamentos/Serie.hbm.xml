@@ -6,12 +6,12 @@
         </id>
         <property name="Titulo" not-null="true"/>
  
-        <bag name="Temporadas" fetch="join">
+        <bag name="Temporadas" fetch="join" cascade="save-update">
             <key column="SerieId" />
             <one-to-many class="Temporada"/>
         </bag>
 
-        <bag name="Genero" table="SeriesGeneros">
+        <bag name="Genero" table="SeriesGeneros" cascade="save-update">
             <key column="SerieId" />
             <many-to-many class="Genero" column="generoId"/>
         </bag>

@@ -4,8 +4,8 @@ namespace FilmesAPI.Dtos.Diretor
 {
     public class CreateDiretorDto
     {
-        public string nomeCompleto { get; set; }
+        public string NomeCompleto { get; set; }
         
-        public virtual string dataNascimento { get; set; }
+        public virtual string DataNascimento { get; set; }
     }
 }
