@@ -26,8 +26,10 @@ namespace FilmesAPI.Controllers
             Serie serie = _mapper.Map<Serie>(serieDto);
             
             _SerieContext.Adiciona(serie);
-            
-            return Ok(serie);
+
+            ReadSerieDTO readSerieDTO = _mapper.Map<ReadSerieDTO>(serie);
+
+            return Ok(readSerieDTO);
         }
     }
 }

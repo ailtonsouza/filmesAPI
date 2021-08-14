@@ -1,8 +1,12 @@
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using FilmesAPI.Dtos.Ator;
+using FilmesAPI.Dtos.Genero;
+using FilmesAPI.Entidades;
 
-namespace FilmesAPI.Entidades
+namespace FilmesAPI.DTOs.Serie
 {
-    public class Epsodio
+    public class ReadSerieDTO
     {
         [Key]
         [Required]
@@ -11,9 +15,7 @@ namespace FilmesAPI.Entidades
         [Required(ErrorMessage = "O campo título é obrigatório")]
         public virtual string Titulo { get; set; }
         
-        [Required(ErrorMessage = "O campo título é obrigatório")]
-        public virtual string Duracao { get; set; }
+        public virtual IList<ReadGeneroDto> Genero { get; set; }
         
-        public virtual Temporada Temporada { get; set; }
     }
 }

@@ -18,5 +18,10 @@
             <many-to-many class="Ator" column="atorId"/>
         </bag>
 
+        <set name="Epsodio" fetch="join">
+            <key column="TemporadaId" />
+            <one-to-many class="Epsodio"/>
+        </set>
+        
     </class>
 </hibernate-mapping>

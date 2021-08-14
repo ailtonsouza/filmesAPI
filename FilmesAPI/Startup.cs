@@ -30,10 +30,10 @@ namespace FilmesAPI
         {
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddNHibernate();
-            services.AddControllersWithViews()
-                .AddNewtonsoftJson(options =>
-                    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
-                );
+            // services.AddControllersWithViews()
+            //     .AddNewtonsoftJson(options =>
+            //         options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+            //     );
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

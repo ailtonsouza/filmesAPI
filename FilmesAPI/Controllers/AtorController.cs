@@ -1,5 +1,6 @@
 using AutoMapper;
 using FilmesAPI.DAO;
+using FilmesAPI.Dtos.Ator;
 using FilmesAPI.Dtos.Diretor;
 using FilmesAPI.Entidades;
 using Microsoft.AspNetCore.Mvc;
@@ -11,23 +12,23 @@ namespace FilmesAPI.Controllers
     [Route("[controller]")]
     public class AtorController :ControllerBase
     {
-        private DiretorDAO _context;
+        private AtorDAO _context;
         private IMapper _mapper;
 
         public AtorController(IMapper mapper, ISession session)
         {
             _mapper = mapper;
-            _context = new DiretorDAO(session);
+            _context = new AtorDAO(session);
         }
         
         [HttpPost]
-        public IActionResult AdicionaDiretor ([FromBody] CreateDiretorDto diretorDto)
+        public IActionResult AdicionaAtor ([FromBody] CreateAtorDto atorDto)
         {
         
-            Diretor diretor = _mapper.Map<Diretor>(diretorDto);
-            _context.Adiciona(diretor);
-            ReadDiretorDto ReaddiretorDto = _mapper.Map<ReadDiretorDto>(diretor);
-            return Ok(ReaddiretorDto);
+            Ator ator = _mapper.Map<Ator>(atorDto);
+            _context.Adiciona(ator);
+            ReadAtorDto ReadAtorDto = _mapper.Map<ReadAtorDto>(ator);
+            return Ok(ReadAtorDto);
 
         }
 

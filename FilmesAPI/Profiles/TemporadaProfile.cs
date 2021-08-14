@@ -9,6 +9,7 @@ namespace FilmesAPI.Profiles
         public TemporadaProfile()
         {
             CreateMap<CreateTemporadaDTO, Temporada>();
+            CreateMap<Temporada, ReadTemporadaDTO>();
         }
     }
 }

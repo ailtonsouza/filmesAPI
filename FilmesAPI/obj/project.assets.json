@@ -6350,7 +6350,7 @@
     ]
   },
   "packageFolders": {
-    "/home/ailtonsouza/.nuget/packages/": {}
+    "/root/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
@@ -6358,11 +6358,11 @@
       "projectUniqueName": "/home/ailtonsouza/Desktop/Programacao/C#/FilmesAPI/FilmesAPI/FilmesAPI/FilmesAPI.csproj",
       "projectName": "FilmesAPI",
       "projectPath": "/home/ailtonsouza/Desktop/Programacao/C#/FilmesAPI/FilmesAPI/FilmesAPI/FilmesAPI.csproj",
-      "packagesPath": "/home/ailtonsouza/.nuget/packages/",
+      "packagesPath": "/root/.nuget/packages/",
       "outputPath": "/home/ailtonsouza/Desktop/Programacao/C#/FilmesAPI/FilmesAPI/FilmesAPI/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/ailtonsouza/.nuget/NuGet/NuGet.Config"
+        "/root/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
@@ -6425,7 +6425,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/snap/dotnet-sdk/current/sdk/5.0.400/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/snap/dotnet-sdk/137/sdk/5.0.400/RuntimeIdentifierGraph.json"
       }
     }
   }

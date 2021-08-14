@@ -19,5 +19,10 @@ namespace FilmesAPI.DAO
             session.Save(diretor);
             transacao.Commit();
         }
+        
+        public Diretor BuscaPorId(int id)
+        {
+            return session.Get<Diretor>(id);
+        }
     }
 }

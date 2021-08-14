@@ -31,6 +31,8 @@
       <Content Include="hibernate.cfg.xml">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
+      <None Remove="Mapeamentos\Epsodio.hbm.xml" />
+      <EmbeddedResource Include="Mapeamentos\Epsodio.hbm.xml" />
     </ItemGroup>
 
 </Project>

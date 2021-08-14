@@ -14,6 +14,7 @@ namespace FilmesAPI.Controllers
         private TemporadaDAO _TemporaContext;
         private SerieDAO _SerieContext;
         private AtorDAO _AtorContext;
+        private DiretorDAO _DiretorContext;
         private IMapper _mapper;
 
         public TemporadaController(IMapper mapper, ISession session)
@@ -21,6 +22,7 @@ namespace FilmesAPI.Controllers
             _TemporaContext = new TemporadaDAO(session);
             _SerieContext = new SerieDAO(session);
             _AtorContext = new AtorDAO(session);
+            _DiretorContext = new DiretorDAO(session);
             _mapper = mapper;
         }
 
@@ -31,22 +33,54 @@ namespace FilmesAPI.Controllers
             Serie serie = _SerieContext.BuscaPorId(temporadaDto.SerieId);
             temporada.Serie = serie;
             _TemporaContext.Adiciona(temporada);
-            return Ok(temporada);
+            ReadTemporadaDTO readTemporadaDto = _mapper.Map<ReadTemporadaDTO>(temporada);
+            return Ok(readTemporadaDto);
+        }
+
+        [HttpPatch("{id}/ator")]
+        public IActionResult AdicionarAtorTemporada(int id, int ids, [FromBody] InsertAtorTemporadaDTO AtorDTO )
+        {
+            Temporada temporada = _TemporaContext.BuscaPorId(id);
+            if (temporada == null)
+            {
+                return NotFound("Temporada não foi encontrada"); 
+            }
+            
+             Ator ator = _AtorContext.BuscaPorId(AtorDTO.AtorId);
+             if (ator == null)
+             {
+                 return NotFound("Ator não foi encontrado"); 
+             }
+             
+             temporada.Ator.Add(ator);
+             _TemporaContext.Update(temporada);
+            
+             ReadTemporadaDTO temporadaDto = _mapper.Map<ReadTemporadaDTO>(temporada);
+            return Ok(temporadaDto);
         }
         
-        [HttpPost("{id}")]
-        public IActionResult AdicionarAtorTemporada(int id, [FromBody] int atorid)
+        
+        [HttpPatch("{id}/diretor")]
+        public IActionResult AdicionarDiretorTemporada(int id, InsertDiretorTemporadaDTO diretorDTO)
         {
-            // Temporada temporada = _TemporaContext.BuscaPorId(id);
-            // if (temporada == null)
-            // {
-            //     return NotFound(); 
-            // }
+            Temporada temporada = _TemporaContext.BuscaPorId(id);
+            if (temporada == null)
+            {
+                return NotFound("Temporada não foi encontrada"); 
+            }
+            
+            Diretor diretor = _DiretorContext.BuscaPorId(diretorDTO.DiretorId);
+            if (diretor == null)
+            {
+                return NotFound("Ator não foi encontrado"); 
+            }
+             
+            temporada.Diretor.Add(diretor);
+            _TemporaContext.Update(temporada);
+            
+            ReadTemporadaDTO temporadaDto = _mapper.Map<ReadTemporadaDTO>(temporada);
+            return Ok(temporadaDto);
 
-             //Ator ator = _AtorContext.BuscaPorId(atorID);
-             // temporada.Ator.Add(ator);
-             // _TemporaContext.Update(temporada);
-            return Ok(atorid);
         }
     }
 }
