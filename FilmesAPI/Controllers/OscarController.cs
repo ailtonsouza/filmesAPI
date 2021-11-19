@@ -73,10 +73,25 @@ namespace FilmesAPI.Controllers
                 return NotFound("O Oscar não foi encontrado");
             }
 
-            var readOscar = 
+            var readOscarDTO = 
                 _mapper.Map<ReadOscarAndFilmeDto>(oscar);
             
-            return Ok();
+            return Ok(readOscarDTO);
+        }
+        
+        [HttpDelete("{id}")]
+        public IActionResult RemovePorId(int id)
+        {
+            Oscar oscar =  _OscarContext.BuscaPorId(id);
+            
+            if (oscar == null)
+            {
+                return NotFound("O Oscar não foi encontrado");
+            }
+
+            _OscarContext.Remove(oscar);
+            
+            return NoContent();
         }
     }
 }

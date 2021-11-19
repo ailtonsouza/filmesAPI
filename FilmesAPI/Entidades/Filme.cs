@@ -8,7 +8,8 @@ namespace FilmesAPI.Entidades
 {
     public class Filme : Midia
     {
-        [Required(ErrorMessage = "O campo diretor é obrigatório")]
+
+       // [Required(ErrorMessage = "O campo diretor é obrigatório")]
         public virtual IList<Diretor> Diretor { get; set; }
         
         //[Required(ErrorMessage = "O campo Ator é obrigatório")]
@@ -18,7 +19,11 @@ namespace FilmesAPI.Entidades
         public virtual int Duracao { get; set; }
 
        public virtual IList<Oscar> Oscar { get; set; }
-       
+
+       public virtual void AddDiretor(Diretor diretor)
+       {
+           this.Diretor.Add(diretor);
+       }
        
        public virtual Filme ValidaOscar(Oscar oscar)
        {

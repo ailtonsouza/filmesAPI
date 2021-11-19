@@ -15,6 +15,7 @@
         <bag name="Ator" table="FilmesAtores" cascade="save-update">
             <key column="FilmeId" />
             <many-to-many class="Ator" column="atorId"/>
+            <element column="SIZE" type="Int32"/>
         </bag>
 
         <bag name="Genero" table="FilmesGeneros" cascade="save-update" >

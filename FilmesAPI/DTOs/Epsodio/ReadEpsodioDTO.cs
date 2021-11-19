@@ -4,6 +4,7 @@ namespace FilmesAPI.DTOs.Epsodio
 {
     public class ReadEpsodioDTO
     {
+        public int Id { get; set; }
         public string Titulo { get; set; }
         public int Duracao { get; set; }
         public ReadTemporadaDTO Temporada { get; set; }

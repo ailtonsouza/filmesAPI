@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using FilmesAPI.Entidades;
 using NHibernate;
 
@@ -24,5 +26,24 @@ namespace FilmesAPI.DAO
         {
             return session.Get<Ator>(id);
         }
+        
+        public IEnumerable<Ator>  BuscaTodos()
+        {
+            return session.Query<Ator>();
+        }
+        
+        public IList<Ator> BuscaPorIds(IList<int> ids)
+        {
+            return session.Query<Ator>().Where(p => ids.Contains(p.Id)).ToList();
+        }
+        
+        public void Remove(Ator ator)
+        {
+            ITransaction transacao = session.BeginTransaction();
+            session.Delete(ator);
+            transacao.Commit();
+        }
+
+        
     }
 }

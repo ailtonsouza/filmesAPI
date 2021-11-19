@@ -30,5 +30,12 @@ namespace FilmesAPI.DAO
         {
             return session.Query<Epsodio>();
         }
+        
+        public void Remove(Epsodio epsodio)
+        {
+            ITransaction transacao = session.BeginTransaction();
+            session.Delete(epsodio);
+            transacao.Commit();
+        }
     }
 }

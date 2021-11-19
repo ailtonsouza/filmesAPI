@@ -32,5 +32,12 @@ namespace FilmesAPI.DAO
         {
             return session.Get<Oscar>(id);
         }
+        
+        public void Remove(Oscar oscar)
+        {
+            ITransaction transacao = session.BeginTransaction();
+            session.Delete(oscar);
+            transacao.Commit();
+        }
     }
 }

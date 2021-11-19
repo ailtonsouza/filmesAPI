@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using FilmesAPI.Entidades;
 using NHibernate;
 
@@ -43,5 +44,7 @@ namespace FilmesAPI.DAO
         {
             return session.Query<Filme>();
         }
+        
+ 
     }
 }

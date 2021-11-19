@@ -13,6 +13,7 @@
 
         <bag name="Series" table="SeriesGeneros">
             <key column="GeneroId" />
+   
             <many-to-many class="Serie" column="serieId"/>
         </bag>
         

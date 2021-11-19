@@ -20,6 +20,6 @@ namespace FilmesAPI.Models.Dtos
             set;
         }
         
-        public virtual ReadFilmeDto Filme { get; set; }
+        public virtual ReadFilmeSemOscarDTO Filme { get; set; }
    }
 }

@@ -33,6 +33,15 @@
       </Content>
       <None Remove="Mapeamentos\Epsodio.hbm.xml" />
       <EmbeddedResource Include="Mapeamentos\Epsodio.hbm.xml" />
+      <EmbeddedResource Remove="DTOs\Categoria\**" />
+      <None Remove="DTOs\Categoria\**" />
+      <Content Remove="DTOs\Categoria\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Remove="DTOs\Filme\ReadFilmeWithActorDto.cs" />
+      <Compile Remove="DTOs\Filme\ReadFilmeAndOscarDto.cs" />
+      <Compile Remove="DTOs\Categoria\**" />
     </ItemGroup>
 
 </Project>

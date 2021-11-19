@@ -8,10 +8,11 @@ namespace FilmesAPI.Profiles
     {
         public FilmeProfile()
         {
-            CreateMap<Filme, ReadFilmeAndOscarDto>();
+            CreateMap<Filme, ReadFilmeDto>();
             CreateMap<CreateFilmeDto, Filme>();
             CreateMap<Filme, ReadFilmeDto>();
             CreateMap<UpdateFilmeDto, Filme>();
+            CreateMap<Filme,ReadFilmeSemOscarDTO>();
         } 
     }
 }

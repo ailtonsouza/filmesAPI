@@ -51,5 +51,36 @@ namespace FilmesAPI.Controllers
         var ep = _mapper.Map<IList<ReadEpsodioDTO>>(epsodio);
         return Ok(ep);
     }
+    
+    [HttpGet ("{id}")]
+    public IActionResult BuscarEpsodioPorId(int id)
+    {
+
+        var epsodio = _Epsodiocontext.BuscaPorId(id);
+        if (epsodio == null)
+        {
+            return NotFound();
+        }
+        var epsodioDto = _mapper.Map<ReadEpsodioDTO>(epsodio);
+        return Ok(epsodioDto);
+    }
+    
+    
+    [HttpDelete("{id}")]
+    public IActionResult RemoveEpsodioPorId(int id)
+    {
+        var epsodio =  _Epsodiocontext.BuscaPorId(id);
+            
+        if (epsodio == null)
+        {
+            return NotFound("O Epsodio não foi encontrado");
+        }
+
+        _Epsodiocontext.Remove(epsodio);
+            
+        return NoContent();
+    }
+    
+    
     }
 }

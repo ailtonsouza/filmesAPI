@@ -1,13 +1,12 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using FilmesAPI.Dtos.Ator;
 using FilmesAPI.Dtos.Diretor;
 using FilmesAPI.Dtos.Genero;
 
-
 namespace FilmesAPI.Models.Dtos
 {
-    public class ReadFilmeDto
+    public class ReadFilmeSemOscarDTO
     {
         [Key]
         [Required]
@@ -25,6 +24,5 @@ namespace FilmesAPI.Models.Dtos
         
         public virtual IList<ReadGeneroDto> Genero{ get; set; }
         
-        public virtual IList<ReadOscarDto> Oscar{ get; set; }
     }
 }

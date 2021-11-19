@@ -6350,19 +6350,19 @@
     ]
   },
   "packageFolders": {
-    "/root/.nuget/packages/": {}
+    "C:\\Users\\ailto\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/ailtonsouza/Desktop/Programacao/C#/FilmesAPI/FilmesAPI/FilmesAPI/FilmesAPI.csproj",
+      "projectUniqueName": "C:\\Users\\ailto\\Desktop\\Programação\\FilmesAPI\\FilmesAPI\\FilmesAPI.csproj",
       "projectName": "FilmesAPI",
-      "projectPath": "/home/ailtonsouza/Desktop/Programacao/C#/FilmesAPI/FilmesAPI/FilmesAPI/FilmesAPI.csproj",
-      "packagesPath": "/root/.nuget/packages/",
-      "outputPath": "/home/ailtonsouza/Desktop/Programacao/C#/FilmesAPI/FilmesAPI/FilmesAPI/obj/",
+      "projectPath": "C:\\Users\\ailto\\Desktop\\Programação\\FilmesAPI\\FilmesAPI\\FilmesAPI.csproj",
+      "packagesPath": "C:\\Users\\ailto\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ailto\\Desktop\\Programação\\FilmesAPI\\FilmesAPI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/root/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\ailto\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
@@ -6425,7 +6425,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/snap/dotnet-sdk/137/sdk/5.0.400/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
       }
     }
   }

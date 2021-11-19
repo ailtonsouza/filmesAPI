@@ -1,5 +1,8 @@
+using System.Collections.Generic;
+using System.Linq;
 using AutoMapper;
 using FilmesAPI.DAO;
+using FilmesAPI.Dtos.Diretor;
 using FilmesAPI.DTOs.Temporada;
 using FilmesAPI.Entidades;
 using Microsoft.AspNetCore.Mvc;
@@ -35,6 +38,17 @@ namespace FilmesAPI.Controllers
             _TemporaContext.Adiciona(temporada);
             ReadTemporadaDTO readTemporadaDto = _mapper.Map<ReadTemporadaDTO>(temporada);
             return Ok(readTemporadaDto);
+        }
+        
+        [HttpGet]
+        public IActionResult RecuperarTemporadas()
+        {
+
+            var temporadas = _TemporaContext.BuscaTodos();
+
+            var temporadasDTO = _mapper.Map<IEnumerable<ReadTemporadaDTO>>(temporadas);
+            
+            return Ok(temporadasDTO);
         }
 
         [HttpPatch("{id}/ator")]
@@ -82,5 +96,35 @@ namespace FilmesAPI.Controllers
             return Ok(temporadaDto);
 
         }
+        
+        [HttpGet ("{id}")]
+        public IActionResult BuscarTemporadaPorId(int id)
+        {
+
+            var temporada = _TemporaContext.BuscaPorId(id);
+            if (temporada == null)
+            {
+                return NotFound();
+            }
+            var temporadaDto = _mapper.Map<ReadTemporadaDTO>(temporada);
+            return Ok(temporadaDto);
+        }
+        
+        [HttpDelete("{id}")]
+        public IActionResult RemoveTemporadaPorId(int id)
+        {
+            var temporada =  _TemporaContext.BuscaPorId(id);
+            
+            if (temporada == null)
+            {
+                return NotFound("A temporada não foi encontrado");
+            }
+
+            _TemporaContext.Remove(temporada);
+            
+            return NoContent();
+        }
     }
+    
+    
 }

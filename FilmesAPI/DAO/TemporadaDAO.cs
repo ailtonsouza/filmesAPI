@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using FilmesAPI.Entidades;
 using NHibernate;
 
@@ -29,6 +30,18 @@ namespace FilmesAPI.DAO
             ITransaction transacao = session.BeginTransaction();
             session.Save(temporada);
             transacao.Commit();
+        }
+        
+        public void Remove(Temporada temporada)
+        {
+            ITransaction transacao = session.BeginTransaction();
+            session.Delete(temporada);
+            transacao.Commit();
+        }
+        
+        public IEnumerable<Temporada> BuscaTodos()
+        {
+            return session.Query<Temporada>();
         }
     }
 }

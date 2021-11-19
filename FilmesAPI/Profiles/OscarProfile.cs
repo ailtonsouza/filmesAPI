@@ -11,6 +11,7 @@ namespace FilmesAPI.Profiles
             CreateMap<CreateOscarDto, Oscar>();
             CreateMap<Oscar, ReadOscarDto>();
             CreateMap<Oscar, ReadOscarAndFilmeDto>();
+            CreateMap<Oscar, CreateOscarDto>();
         }
     }
 }
