@@ -6,16 +6,16 @@
         </id>
         <property name="Nome" not-null="true"/>
 
-        <bag name="Filmes" table="FilmesGeneros">
+        <bag name="FilmeGenero" cascade="save-update">
             <key column="GeneroId" />
-            <many-to-many class="Filme" column="filmeId"/>
+            <one-to-many class="FilmeGenero"/>
+        </bag>
+        
+        <bag name="SerieGenero" cascade="save-update">
+            <key column="GeneroId" />
+            <one-to-many class="SerieGenero" />
         </bag>
 
-        <bag name="Series" table="SeriesGeneros">
-            <key column="GeneroId" />
-   
-            <many-to-many class="Serie" column="serieId"/>
-        </bag>
         
     </class>
 </hibernate-mapping>

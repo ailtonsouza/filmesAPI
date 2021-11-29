@@ -13,8 +13,8 @@ namespace FilmesAPI.Entidades
         
         public virtual string Nome { get; set; }
         
-        public virtual IList<Filme> Filmes { get; set; }
+        public virtual IList<FilmeGenero> FilmeGenero { get; set; }
         
-        public virtual IList<Serie> Series { get; set; }
+        public virtual IList<SerieGenero> SerieGenero { get; set; }
     }
 }

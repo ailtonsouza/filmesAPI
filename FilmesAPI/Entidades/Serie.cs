@@ -7,5 +7,7 @@ namespace FilmesAPI.Entidades
     {
         [Required(ErrorMessage = "")]
         public virtual IList<Temporada> Temporadas { get; set; }
+        
+        public virtual IList<SerieGenero> SerieGenero { get; set; }
     }
 }

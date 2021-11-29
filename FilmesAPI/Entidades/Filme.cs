@@ -10,20 +10,24 @@ namespace FilmesAPI.Entidades
     {
 
        // [Required(ErrorMessage = "O campo diretor é obrigatório")]
-        public virtual IList<Diretor> Diretor { get; set; }
+        public virtual IList<FilmeDiretor> FilmeDiretor { get; set; }
         
         //[Required(ErrorMessage = "O campo Ator é obrigatório")]
-        public virtual IList<Ator> Ator { get; set; }
+      //  public virtual IList<Ator> Ator { get; set; }
         
        [Range(1, 600, ErrorMessage = "Duração deve ter no minimo 1 e no máximo 600 minutos")]
         public virtual int Duracao { get; set; }
 
        public virtual IList<Oscar> Oscar { get; set; }
+       
+       public virtual IList<FilmeAtor> FilmeAtor { get; set; }
+       
+       public virtual IList<FilmeGenero> FilmeGenero { get; set; }
 
-       public virtual void AddDiretor(Diretor diretor)
-       {
-           this.Diretor.Add(diretor);
-       }
+       // public virtual void AddDiretor(Diretor diretor)
+       // {
+       //     this.Diretor.Add(diretor);
+       // }
        
        public virtual Filme ValidaOscar(Oscar oscar)
        {

@@ -1,5 +1,6 @@
 using AutoMapper;
 using FilmesAPI.Dtos.Genero;
+using FilmesAPI.DTOs.Serie;
 using FilmesAPI.Entidades;
 
 namespace FilmesAPI.Profiles
@@ -8,10 +9,12 @@ namespace FilmesAPI.Profiles
     {
         public GeneroProfile()
         {
-            CreateMap<CreateGeneroDto, Genero>();  
-            CreateMap<Genero, CreateGeneroDto>(); 
-            CreateMap<Genero, ReadGeneroDto>(); 
-            CreateMap<ReadGeneroDto, Genero>(); 
+            CreateMap<GeneroDTO, Genero>();  
+            CreateMap<Genero, GeneroDTO>(); 
+            CreateMap<Genero, GeneroFilmeDTO>(); 
+            CreateMap<Genero, GeneroFilmeDTO>(); 
+            
         }
+        
     }
 }

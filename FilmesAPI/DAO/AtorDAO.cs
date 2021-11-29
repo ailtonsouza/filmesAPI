@@ -43,6 +43,13 @@ namespace FilmesAPI.DAO
             session.Delete(ator);
             transacao.Commit();
         }
+        
+        public void Update(Ator ator)
+        {
+            ITransaction transacao = session.BeginTransaction();
+            session.Save(ator);
+            transacao.Commit();
+        }
 
         
     }

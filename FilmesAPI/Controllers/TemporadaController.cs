@@ -1,12 +1,14 @@
-using System.Collections.Generic;
-using System.Linq;
-using AutoMapper;
+ using System.Collections.Generic;
+ using System.Linq;
+ using System.Net;
+ using AutoMapper;
 using FilmesAPI.DAO;
+using FilmesAPI.DTOs.Ator;
 using FilmesAPI.Dtos.Diretor;
 using FilmesAPI.DTOs.Temporada;
-using FilmesAPI.Entidades;
-using Microsoft.AspNetCore.Mvc;
-using NHibernate;
+ using FilmesAPI.Entidades;
+ using Microsoft.AspNetCore.Mvc;
+ using NHibernate;
 
 namespace FilmesAPI.Controllers
 {
@@ -30,13 +32,19 @@ namespace FilmesAPI.Controllers
         }
 
         [HttpPost]
-        public IActionResult AdicionarTemporada([FromBody] CreateTemporadaDTO temporadaDto)
+        public IActionResult AdicionarTemporada([FromBody] TemporadaDTO temporadaDto)
         {
             Temporada temporada = _mapper.Map<Temporada>(temporadaDto);
-            Serie serie = _SerieContext.BuscaPorId(temporadaDto.SerieId);
+            Serie serie = _SerieContext.BuscaPorId(temporadaDto.Id);
+            if (serie == null)
+            {
+                return NotFound("Serie não foi encontrada"); 
+            }
+
+
             temporada.Serie = serie;
             _TemporaContext.Adiciona(temporada);
-            ReadTemporadaDTO readTemporadaDto = _mapper.Map<ReadTemporadaDTO>(temporada);
+            TemporadaDTO readTemporadaDto = _mapper.Map<TemporadaDTO>(temporada);
             return Ok(readTemporadaDto);
         }
         
@@ -46,13 +54,13 @@ namespace FilmesAPI.Controllers
 
             var temporadas = _TemporaContext.BuscaTodos();
 
-            var temporadasDTO = _mapper.Map<IEnumerable<ReadTemporadaDTO>>(temporadas);
+            var temporadasDTO = _mapper.Map<IEnumerable<TemporadaDTO>>(temporadas);
             
             return Ok(temporadasDTO);
         }
 
-        [HttpPatch("{id}/ator")]
-        public IActionResult AdicionarAtorTemporada(int id, int ids, [FromBody] InsertAtorTemporadaDTO AtorDTO )
+        [HttpPatch("{id}/AddActor")]
+        public IActionResult AdicionarAtorTemporada(int id, [FromBody] AtorFilmeDTO AtorDTO )
         {
             Temporada temporada = _TemporaContext.BuscaPorId(id);
             if (temporada == null)
@@ -60,22 +68,73 @@ namespace FilmesAPI.Controllers
                 return NotFound("Temporada não foi encontrada"); 
             }
             
-             Ator ator = _AtorContext.BuscaPorId(AtorDTO.AtorId);
+             Ator ator = _AtorContext.BuscaPorId(AtorDTO.Id);
              if (ator == null)
              {
                  return NotFound("Ator não foi encontrado"); 
              }
+
+             TemporadaAtor TA = new TemporadaAtor();
+             TA.Ator = ator;
+             TA.NomePersonagem = AtorDTO.NomePersonagem;
+             TA.Temporada = temporada;
              
-             temporada.Ator.Add(ator);
+             temporada.TemporadaAtor.Add(TA);
              _TemporaContext.Update(temporada);
-            
-             ReadTemporadaDTO temporadaDto = _mapper.Map<ReadTemporadaDTO>(temporada);
+             
+             TemporadaDTO temporadaDto = _mapper.Map<TemporadaDTO>(temporada);
             return Ok(temporadaDto);
         }
         
+        [HttpDelete("{id}/RemoveDiretor")]
+        public IActionResult RemoveTemporadaDiretor(int id, [FromBody] TemporadaDiretorIdDTO RemoveTemporadaDiretorDTO )
+        {
+            Temporada temporada = _TemporaContext.BuscaPorId(id);
+            if (temporada == null)
+            {
+                return NotFound("Temporada não foi encontrada"); 
+            }
+
+            TemporadaDiretor temporadaDiretor = temporada.TemporadaDiretor.FirstOrDefault(td => td.Id == RemoveTemporadaDiretorDTO.TemporadaDiretorId);
+            if (temporadaDiretor == null)
+            {
+                return NotFound("Diretor não foi encontrado na temporada"); 
+            }
+
+            temporada.TemporadaDiretor.Remove(temporadaDiretor);
         
-        [HttpPatch("{id}/diretor")]
-        public IActionResult AdicionarDiretorTemporada(int id, InsertDiretorTemporadaDTO diretorDTO)
+            _TemporaContext.Update(temporada);
+             
+       
+            return NoContent();
+        }
+        
+               
+        [HttpDelete("{id}/RemoveAtor")]
+        public IActionResult RemoveTemporadaAtor(int id, [FromBody] TemporadaAtorIdDTO RemoveTemporadaAtorDTO )
+        {
+            Temporada temporada = _TemporaContext.BuscaPorId(id);
+            if (temporada == null)
+            {
+                return NotFound("Temporada não foi encontrada"); 
+            }
+
+            TemporadaAtor temporadaAtor = temporada.TemporadaAtor.FirstOrDefault(td => td.Id == RemoveTemporadaAtorDTO.TemporadaAtorId);
+            if (temporadaAtor == null)
+            {
+                return NotFound("O Ator não foi encontrado na temporada"); 
+            }
+
+            temporada.TemporadaAtor.Remove(temporadaAtor);
+        
+            _TemporaContext.Update(temporada);
+            
+            return NoContent();
+        }
+        
+        
+        [HttpPatch("{id}/AddDiretor")]
+        public IActionResult AdicionarDiretorTemporada(int id, DiretorDTO diretorDTO)
         {
             Temporada temporada = _TemporaContext.BuscaPorId(id);
             if (temporada == null)
@@ -83,16 +142,20 @@ namespace FilmesAPI.Controllers
                 return NotFound("Temporada não foi encontrada"); 
             }
             
-            Diretor diretor = _DiretorContext.BuscaPorId(diretorDTO.DiretorId);
+            Diretor diretor = _DiretorContext.BuscaPorId(diretorDTO.Id);
             if (diretor == null)
             {
-                return NotFound("Ator não foi encontrado"); 
+                return NotFound("Diretor não foi encontrado"); 
             }
+
+            TemporadaDiretor TD = new TemporadaDiretor();
+            TD.Diretor = diretor;
+            TD.Temporada = temporada;
              
-            temporada.Diretor.Add(diretor);
-            _TemporaContext.Update(temporada);
-            
-            ReadTemporadaDTO temporadaDto = _mapper.Map<ReadTemporadaDTO>(temporada);
+             temporada.TemporadaDiretor.Add(TD);
+             _TemporaContext.Update(temporada);
+            //
+            TemporadaDTO temporadaDto = _mapper.Map<TemporadaDTO>(temporada);
             return Ok(temporadaDto);
 
         }
@@ -106,7 +169,7 @@ namespace FilmesAPI.Controllers
             {
                 return NotFound();
             }
-            var temporadaDto = _mapper.Map<ReadTemporadaDTO>(temporada);
+            var temporadaDto = _mapper.Map<TemporadaDTO>(temporada);
             return Ok(temporadaDto);
         }
         
@@ -118,6 +181,12 @@ namespace FilmesAPI.Controllers
             if (temporada == null)
             {
                 return NotFound("A temporada não foi encontrado");
+            }
+            
+            if (temporada.Epsodio.Count != 0)
+            {
+
+                return BadRequest("Existem epsodios associados a temporada");
             }
 
             _TemporaContext.Remove(temporada);

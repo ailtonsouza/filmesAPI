@@ -42,6 +42,7 @@ namespace FilmesAPI.DAO
         public IEnumerable<Temporada> BuscaTodos()
         {
             return session.Query<Temporada>();
+            session.Query<Ator>();
         }
     }
 }

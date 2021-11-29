@@ -8,10 +8,9 @@ namespace FilmesAPI.Profiles
     {
         public OscarProfile()
         {
-            CreateMap<CreateOscarDto, Oscar>();
-            CreateMap<Oscar, ReadOscarDto>();
-            CreateMap<Oscar, ReadOscarAndFilmeDto>();
-            CreateMap<Oscar, CreateOscarDto>();
+            CreateMap<OscarDTO, Oscar>();
+            CreateMap<Oscar, OscarDTO>();
+            CreateMap<Oscar, OscarFilmeDTO>();
         }
     }
 }

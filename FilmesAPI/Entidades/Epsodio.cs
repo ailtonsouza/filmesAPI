@@ -12,7 +12,9 @@ namespace FilmesAPI.Entidades
         public virtual string Titulo { get; set; }
         
         [Required(ErrorMessage = "O campo título é obrigatório")]
-        public virtual string Duracao { get; set; }
+        public virtual int Duracao { get; set; }
+        
+        public virtual int NumeroEpsodio { get; set; }
         
         public virtual Temporada Temporada { get; set; }
     }

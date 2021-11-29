@@ -44,5 +44,12 @@ namespace FilmesAPI.DAO
             session.Delete(diretor);
             transacao.Commit();
         }
+        
+        public void Update(Diretor diretor)
+        {
+            ITransaction transacao = session.BeginTransaction();
+            session.Save(diretor);
+            transacao.Commit();
+        }
     }
 }

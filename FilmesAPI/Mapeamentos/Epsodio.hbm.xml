@@ -6,8 +6,15 @@
         </id>
         <property name="Titulo" not-null="true"/>
         <property name="Duracao" not-null="true"/>
+        <property name="NumeroEpsodio" not-null="true"/>
+        
         
       <many-to-one name="Temporada" column="TemporadaId" fetch="join" not-null="true"/>
-
+ 
+        
+        
+        
+        
+        
     </class>
 </hibernate-mapping>

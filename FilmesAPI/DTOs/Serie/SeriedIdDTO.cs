@@ -1,6 +1,6 @@
 ﻿namespace FilmesAPI.DTOs.Serie
 {
-    public class SeriedIdDTO
+    public class eriedIdDTO
     {
         public virtual int SerieId { get; set; }
     }

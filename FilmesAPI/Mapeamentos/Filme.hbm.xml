@@ -7,26 +7,28 @@
         <property name="Titulo" not-null="true"/>
         <property name="Duracao" not-null="true"/>
 
-        <bag name="Diretor" table="FilmesDiretores" cascade="save-update">
+        <bag name="FilmeDiretor" cascade="all-delete-orphan" inverse="true" >
             <key column="FilmeId" />
-            <many-to-many class="Diretor" column="diretorId"/>
+            <one-to-many class="FilmeDiretor"/>
         </bag>
 
-        <bag name="Ator" table="FilmesAtores" cascade="save-update">
+        <bag name="FilmeAtor" cascade="all-delete-orphan" inverse="true" >
             <key column="FilmeId" />
-            <many-to-many class="Ator" column="atorId"/>
-            <element column="SIZE" type="Int32"/>
+            <one-to-many class="FilmeAtor" />
         </bag>
 
-        <bag name="Genero" table="FilmesGeneros" cascade="save-update" >
+        <bag name="FilmeGenero" cascade="all-delete-orphan" inverse="true" >
             <key column="FilmeId" />
-            <many-to-many class="Genero" column="generoId"/>
+            <one-to-many class="FilmeGenero"/>
         </bag>
 
         <bag name="Oscar" fetch="join">
             <key column="FilmeId" />
             <one-to-many class="Oscar"/>
         </bag>
+        
+        
+        
 
 
     </class>

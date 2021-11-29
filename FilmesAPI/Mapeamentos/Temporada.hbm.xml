@@ -6,22 +6,24 @@
         </id>
         <property name="NumeroDaTemporada" not-null="true"/>
 
-        <bag name="Diretor" table="TemporadaDiretores" cascade="save-update">
+        <bag name="TemporadaDiretor" cascade="all-delete-orphan" inverse="true">
             <key column="TemporadaId" />
-            <many-to-many class="Diretor" column="diretorId"/>
+            <one-to-many class="TemporadaDiretor" />
         </bag>
 
         <many-to-one name="Serie" column="SerieId" fetch="join" not-null="true"/>
 
-        <bag name="Ator" table="TemporadaAtores" cascade="save-update">
+        <bag name="TemporadaAtor" cascade="all-delete-orphan" inverse="true">
             <key column="TemporadaId" />
-            <many-to-many class="Ator" column="atorId"/>
-        </bag>
-
-        <set name="Epsodio" fetch="join" >
+            <one-to-many class="TemporadaAtor" />
+        </bag>   
+        
+        <bag name="Epsodio" cascade="all-delete-orphan" inverse="true">
             <key column="TemporadaId" />
             <one-to-many class="Epsodio"/>
-        </set>
+        </bag>
+
+
         
     </class>
 </hibernate-mapping>

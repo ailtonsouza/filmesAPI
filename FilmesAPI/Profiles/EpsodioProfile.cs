@@ -8,8 +8,9 @@ namespace FilmesAPI.Profiles
     {
         public EpsodioProfile()
         {
-            CreateMap<CreateEpsodioDTO, Epsodio>();
-            CreateMap<Epsodio, ReadEpsodioDTO>();
+            CreateMap<Epsodio, EpsodioDTO>();
+            CreateMap<Epsodio, EpsodioTemporadaDTO>();
+            CreateMap<EpsodioDTO, Epsodio>();
         }
     }
 }

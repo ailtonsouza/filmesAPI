@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
 using FilmesAPI.DAO;
-using FilmesAPI.Dtos.Ator;
 using FilmesAPI.Dtos.Genero;
 using FilmesAPI.Entidades;
 using Microsoft.AspNetCore.Mvc;
@@ -23,11 +22,11 @@ namespace FilmesAPI.Controllers
             _GeneroContext = new GeneroDAO(session);
         }
 
-        public IActionResult AdicionaGenero([FromBody] CreateGeneroDto generoDTO)
+        public IActionResult AdicionaGenero([FromBody] GeneroDTO generoDTO)
         {
             Genero genero = _mapper.Map<Genero>(generoDTO);
             _GeneroContext.Adiciona(genero);
-            ReadGeneroDto readGeneroDto = _mapper.Map<ReadGeneroDto>(genero);
+            GeneroDTO readGeneroDto = _mapper.Map<GeneroDTO>(genero);
 
             return Ok(readGeneroDto);
             
@@ -39,7 +38,7 @@ namespace FilmesAPI.Controllers
         {
             var genero = _GeneroContext.BuscaTodos();
    
-            var ReadGenerorDto = _mapper.Map<IList<ReadGeneroDto>>(genero);
+            var ReadGenerorDto = _mapper.Map<IList<GeneroDTO>>(genero);
             return Ok(ReadGenerorDto);
         }
         
@@ -53,7 +52,7 @@ namespace FilmesAPI.Controllers
             {
                 return NotFound();
             }
-            var ReadGenerorDto = _mapper.Map<ReadGeneroDto>(genero);
+            var ReadGenerorDto = _mapper.Map<GeneroDTO>(genero);
             return Ok(ReadGenerorDto);
        }
         
@@ -66,10 +65,48 @@ namespace FilmesAPI.Controllers
             {
                 return NotFound("O Genero não foi encontrado");
             }
+            
+            if (genero.FilmeGenero.Count != 0)
+            {
+                return BadRequest("Genero possui filmes associados");
+            }
+            
+            if (genero.SerieGenero.Count != 0)
+            {
+                return BadRequest("Genero possui series associadas");
+            }
 
             _GeneroContext.Remove(genero);
             
             return NoContent();
         }
+        
+        
+        [HttpPatch("{id}")]
+        public IActionResult AtualizaGenero(int id, [FromBody] GeneroDTO generoDTO)
+        {
+            Genero genero = _GeneroContext.BuscaPorId(id);
+            if (genero == null)
+            {
+                return NotFound("Diretor não encontrado");
+            }
+            
+            if (generoDTO.Nome != null)
+            {
+                genero.Nome = generoDTO.Nome;
+            }
+            
+            _GeneroContext.Update(genero);
+            
+            var updateGeneroDto = _mapper.Map<GeneroDTO>(genero);
+        
+            return Ok(updateGeneroDto);
+        
+        }
+
+
+
+
+
     }
 }

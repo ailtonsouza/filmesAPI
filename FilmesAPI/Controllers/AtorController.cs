@@ -1,9 +1,9 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
 using FilmesAPI.DAO;
-using FilmesAPI.Dtos.Ator;
-using FilmesAPI.Dtos.Diretor;
+using FilmesAPI.DTOs.Ator;
 using FilmesAPI.Entidades;
 using Microsoft.AspNetCore.Mvc;
 using NHibernate;
@@ -28,17 +28,17 @@ namespace FilmesAPI.Controllers
         public IActionResult BuscarTodos()
         {
             var atores = _AtorContext.BuscaTodos();
-            var ep = _mapper.Map<IList<ReadAtorDto>>(atores);
+            var ep = _mapper.Map<IList<AtorDTO>>(atores);
             return Ok(ep);
         }
         
         [HttpPost]
-        public IActionResult AdicionaAtor ([FromBody] CreateAtorDto atorDto)
+        public IActionResult AdicionaAtor ([FromBody] AtorDTO atorDto)
         {
         
             Ator ator = _mapper.Map<Ator>(atorDto);
             _AtorContext.Adiciona(ator);
-            ReadAtorDto ReadAtorDto = _mapper.Map<ReadAtorDto>(ator);
+            AtorDTO ReadAtorDto = _mapper.Map<AtorDTO>(ator);
             return Ok(ReadAtorDto);
 
         }
@@ -49,7 +49,16 @@ namespace FilmesAPI.Controllers
             Ator ator = _AtorContext.BuscaTodos().FirstOrDefault(ator => ator.Id == id);
             if (ator == null)
             {
-                return NotFound();
+                return NotFound("Ator não encontrado");
+            }
+
+            if (ator.FilmeAtor.Count != 0)
+            {
+                return BadRequest("Ator possui filmes associados");
+            }
+            if (ator.TemporadaAtor.Count != 0)
+            {
+                return BadRequest("Ator possui temporadas associados");
             }
             _AtorContext.Remove(ator);
             return NoContent();
@@ -62,11 +71,38 @@ namespace FilmesAPI.Controllers
             Ator ator = _AtorContext.BuscaTodos().FirstOrDefault(ator => ator.Id == id);
             if (ator == null)
             {
-                return NotFound();
+                return NotFound("Ator não encontrado");
             }
-            ReadAtorDto ReadAtorDto = _mapper.Map<ReadAtorDto>(ator);
+            AtorDTO ReadAtorDto = _mapper.Map<AtorDTO>(ator);
             return Ok(ReadAtorDto);
        
+        
+        }
+        
+        
+        [HttpPatch("{id}")]
+        public IActionResult AtualizarAtor(int id, [FromBody] AtorDTO atorDTO)
+        {
+            Ator ator = _AtorContext.BuscaPorId(id);
+            if (ator == null)
+            {
+                return NotFound("Ator não encontrado");
+            }
+
+            if (atorDTO.NomeCompleto != null)
+            {
+                ator.NomeCompleto = atorDTO.NomeCompleto;
+            }
+            if (atorDTO.DataNascimento != null)
+            {
+                ator.DataNascimento = atorDTO.DataNascimento;
+            }
+            
+            _AtorContext.Update(ator);
+            
+            var updateAtorDto = _mapper.Map<AtorDTO>(ator);
+        
+            return Ok(updateAtorDto);
         
         }
 

@@ -36,5 +36,12 @@ namespace FilmesAPI.DAO
             session.Delete(genero);
             transacao.Commit();
         }
+        
+        public void Update(Genero genero)
+        {
+            ITransaction transacao = session.BeginTransaction();
+            session.Save(genero);
+            transacao.Commit();
+        }
     }
 }

@@ -7,10 +7,23 @@
         <property name="NomeCompleto" not-null="true"/>
         <property name="DataNascimento" not-null="true"/>
 
-        <bag name="Filmes" table="FilmesAtores">
+<!--        <bag name="Filmes" table="FilmesAtores">-->
+<!--            <key column="AtorId" />-->
+<!--            <many-to-many class="Filme" column="filmeId"/>-->
+<!--        </bag>-->
+
+        <bag name="FilmeAtor" cascade="save-update">
             <key column="AtorId" />
-            <many-to-many class="Filme" column="filmeId"/>
+            <one-to-many class="FilmeAtor"/>
         </bag>
 
+
+        <bag name="TemporadaAtor" cascade="save-update">
+            <key column="AtorId" />
+            <one-to-many class="TemporadaAtor" />
+        </bag>
+        
+        
+    
     </class>
 </hibernate-mapping>

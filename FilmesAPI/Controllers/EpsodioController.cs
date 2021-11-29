@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using AutoMapper;
 using FilmesAPI.DAO;
@@ -27,7 +28,7 @@ namespace FilmesAPI.Controllers
     }
 
     [HttpPost]
-    public IActionResult AdicionaFilme([FromBody] CreateEpsodioDTO epsodioDto)
+    public IActionResult AdicionaEpsodio([FromBody] EpsodioDTO epsodioDto)
     {
 
          Epsodio epsodio = _mapper.Map<Epsodio>(epsodioDto);
@@ -35,11 +36,11 @@ namespace FilmesAPI.Controllers
          Temporada temporada = _TemporaContext.BuscaPorId(epsodioDto.TemporadaId);
          if (temporada == null)
          {
-             return NotFound("Temporada não encontrada");
+             return NotFound("Temporada não encontrada\\informada");
          }
          epsodio.Temporada = temporada;
          _Epsodiocontext.Adiciona(epsodio);
-         ReadEpsodioDTO ep = _mapper.Map<ReadEpsodioDTO>(epsodio);
+         EpsodioDTO ep = _mapper.Map<EpsodioDTO>(epsodio);
         return Ok(ep);
     }
 
@@ -48,7 +49,7 @@ namespace FilmesAPI.Controllers
     public IActionResult BuscarTodos()
     {
         var epsodio = _Epsodiocontext.BuscaTodos();
-        var ep = _mapper.Map<IList<ReadEpsodioDTO>>(epsodio);
+        var ep = _mapper.Map<IList<EpsodioTemporadaDTO>>(epsodio);
         return Ok(ep);
     }
     
@@ -59,9 +60,9 @@ namespace FilmesAPI.Controllers
         var epsodio = _Epsodiocontext.BuscaPorId(id);
         if (epsodio == null)
         {
-            return NotFound();
+            return NotFound("Epsodio não foi encontrado");
         }
-        var epsodioDto = _mapper.Map<ReadEpsodioDTO>(epsodio);
+        var epsodioDto = _mapper.Map<EpsodioTemporadaDTO>(epsodio);
         return Ok(epsodioDto);
     }
     
@@ -82,5 +83,77 @@ namespace FilmesAPI.Controllers
     }
     
     
+    
+    [HttpPatch("{id}")]
+    public IActionResult AtualizaEpsodio(int id, [FromBody] EpsodioDTO epsodioDTO)
+    {
+        Epsodio epsodio = _Epsodiocontext.BuscaPorId(id);
+        if (epsodio == null)
+        {
+            return NotFound("Epsodio não encontrado");
+        }
+            
+        if (epsodioDTO.Titulo != null)
+        {
+            epsodio.Titulo = epsodioDTO.Titulo;
+        }
+        
+        if (epsodioDTO.Duracao != null)
+        {
+            epsodio.Duracao = epsodioDTO.Duracao;
+        }
+        
+        if (epsodioDTO.NumeroEpsodio != null)
+        {
+            epsodio.NumeroEpsodio = epsodioDTO.NumeroEpsodio;
+        }
+    
+        _Epsodiocontext.Update(epsodio);
+            
+        var updateEpsodioDto = _mapper.Map<EpsodioDTO>(epsodio);
+        
+        return Ok(updateEpsodioDto);
+        
     }
+
+
+    
+    
+    [HttpPatch("{id}/Temporada")]
+        public IActionResult AtualizaTemporada(int id, [FromBody] EpsodioDTO epsodioDTO)
+        {
+        
+            var epsodio = _Epsodiocontext.BuscaPorId(id);
+            if (epsodio == null)
+            {
+                return NotFound("Epsodio não foi encontrado");
+            }
+            
+
+      
+                Temporada temporada = _TemporaContext.BuscaPorId(epsodioDTO.TemporadaId);
+                if (temporada == null)
+                {
+                    return NotFound("Temporada não encontrada'\'não informada");
+                }
+
+                epsodio.Temporada = temporada;
+       
+            
+            _Epsodiocontext.Update(epsodio);
+            
+            var updateEpsodioDto = _mapper.Map<EpsodioDTO>(epsodio);
+        
+            return Ok(updateEpsodioDto);
+
+        }
+    
+    
+    
+    
+
+
+    }
+    
+    
 }

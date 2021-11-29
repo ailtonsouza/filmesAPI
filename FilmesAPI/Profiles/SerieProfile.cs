@@ -8,9 +8,11 @@ namespace FilmesAPI.Profiles
     {
         public SerieProfile()
         {
-            CreateMap<CreateSerieDTO, Serie>();
-            CreateMap<Serie, CreateSerieDTO>();
-            CreateMap<Serie, ReadSerieDTO>();
+            CreateMap<SerieDTO, Serie>();
+            CreateMap<Serie, SerieDTO>();
+            CreateMap<Serie, SerieDTO>();
+            CreateMap<Serie, SerieAgregaçõesDTO>();
+            CreateMap<SerieGenero, SerieGeneroDTO>();
         }
     }
 }

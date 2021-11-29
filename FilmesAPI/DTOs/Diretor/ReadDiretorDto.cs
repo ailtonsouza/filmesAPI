@@ -9,9 +9,9 @@ namespace FilmesAPI.Dtos.Diretor
          [Key]
          [Required]
           public int Id { get; set; }
-        
-           public string nomeCompleto { get; set; }
-        
+           //
+            public string nomeCompleto { get; set; }
+           //
            public virtual string dataNascimento { get; set; }
 
     }

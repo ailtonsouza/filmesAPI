@@ -36,12 +36,39 @@
       <EmbeddedResource Remove="DTOs\Categoria\**" />
       <None Remove="DTOs\Categoria\**" />
       <Content Remove="DTOs\Categoria\**" />
+      <None Remove="Mapeamentos\FilmeAtor.hbm.xml" />
+      <EmbeddedResource Include="Mapeamentos\FilmeAtor.hbm.xml" />
+      <None Remove="Mapeamentos\FilmeGenero.hbm.xml" />
+      <EmbeddedResource Include="Mapeamentos\FilmeGenero.hbm.xml" />
+      <None Remove="Mapeamentos\FilmeDiretor.hbm.xml" />
+      <EmbeddedResource Include="Mapeamentos\FilmeDiretor.hbm.xml" />
+      <None Remove="Mapeamentos\SerieGenero.hbm.xml" />
+      <EmbeddedResource Include="Mapeamentos\SerieGenero.hbm.xml" />
+      <None Remove="Mapeamentos\TemporadaAtor.hbm.xml" />
+      <EmbeddedResource Include="Mapeamentos\TemporadaAtor.hbm.xml" />
+      <None Remove="Mapeamentos\TemporadaDiretor.hbm.xml" />
+      <EmbeddedResource Include="Mapeamentos\TemporadaDiretor.hbm.xml" />
     </ItemGroup>
 
     <ItemGroup>
       <Compile Remove="DTOs\Filme\ReadFilmeWithActorDto.cs" />
       <Compile Remove="DTOs\Filme\ReadFilmeAndOscarDto.cs" />
       <Compile Remove="DTOs\Categoria\**" />
+      <Compile Remove="DTOs\Ator\AtorDto.cs" />
+      <Compile Include="DTOs\Ator\AtorDTO.cs" />
+      <Compile Remove="DTOs\Diretor\ReadDiretorDto.cs" />
+      <Compile Remove="DTOs\Diretor\DiretorIdDto.cs" />
+      <Compile Remove="DTOs\Filme\CreateFilmeDto.cs" />
+      <Compile Remove="DTOs\Filme\ReadFilmeSemOscarDTO.cs" />
+      <Compile Remove="DTOs\Genero\GeneroIdDto.cs" />
+      <Compile Remove="DTOs\Filme\FilmeIdDTO.cs" />
+      <Compile Remove="DTOs\Oscar\OscarIdDTO.cs" />
+      <Compile Remove="DTOs\Serie\SeriedIdDTO.cs" />
+      <Compile Remove="DTOs\Serie\SerieGeneroIdDTO.cs" />
+      <Compile Remove="DTOs\Temporada\ReadTemporadaDTO.cs" />
+      <Compile Remove="DTOs\Oscar\ReadOscarDto.cs" />
+      <Compile Remove="DTOs\Ator\AtorDadosEntrada.cs" />
+      <Compile Remove="DTOs\Temporada\TemporadaAgregações.cs" />
     </ItemGroup>
 
 </Project>

@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using FilmesAPI.Dtos.Ator;
+using FilmesAPI.DTOs.Ator;
 using FilmesAPI.Dtos.Diretor;
 using FilmesAPI.DTOs.Serie;
 
@@ -11,11 +11,11 @@ namespace FilmesAPI.DTOs.Temporada
         
        public virtual int NumeroDaTemporada { get; set; }
        
-       public virtual ReadSerieDTO Serie { get; set; }
+       public virtual SerieDTO Serie { get; set; }
         
-       public virtual IList<ReadAtorDto> Ator { get; set; }
+       public virtual IList<AtorTemporadaDTO> TemporadaAtor { get; set; }
         
-       public virtual IList<ReadDiretorDto> Diretor { get; set; }
+       public virtual IList<DiretorTemporadaDTO> TemporadaDiretor { get; set; }
         
         
 

@@ -25,21 +25,21 @@ namespace FilmesAPI.Controllers
         } 
         
         [HttpPost]
-        public IActionResult AdicionaOscar ([FromBody] CreateOscarDto OscarDto)
+        public IActionResult AdicionaOscar ([FromBody] OscarDTO oscarDTO)
         {
             try
             {
-                Filme filme = _FilmeContext.BuscaPorId(OscarDto.FilmeId);
+                Filme filme = _FilmeContext.BuscaPorId(oscarDTO.FilmeId);
                 if (filme == null)
                 {
                     return NotFound("O Filme não foi encontrado");
                 }
-                Oscar oscar = _mapper.Map<Oscar>(OscarDto);
+                Oscar oscar = _mapper.Map<Oscar>(oscarDTO);
                 oscar.AdicionaFilme(filme);
                 _OscarContext.Adiciona(oscar);
                 
                 var readOscar = 
-                    _mapper.Map<ReadOscarAndFilmeDto>(oscar);
+                    _mapper.Map<OscarFilmeDTO>(oscar);
                 
                 return Ok(readOscar);
             }
@@ -58,7 +58,7 @@ namespace FilmesAPI.Controllers
             IEnumerable<Oscar> oscar = _OscarContext.BuscaTodos();
             
             var readOscar = 
-                _mapper.Map<IList<ReadOscarAndFilmeDto>>(oscar);
+                _mapper.Map<IList<OscarFilmeDTO>>(oscar);
             
             return Ok(readOscar);
         }
@@ -74,7 +74,7 @@ namespace FilmesAPI.Controllers
             }
 
             var readOscarDTO = 
-                _mapper.Map<ReadOscarAndFilmeDto>(oscar);
+                _mapper.Map<OscarFilmeDTO>(oscar);
             
             return Ok(readOscarDTO);
         }
@@ -93,5 +93,9 @@ namespace FilmesAPI.Controllers
             
             return NoContent();
         }
+        
+
+        
+
     }
 }

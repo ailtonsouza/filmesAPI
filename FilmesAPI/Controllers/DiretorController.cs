@@ -25,12 +25,12 @@ namespace FilmesAPI.Controllers
         }
         
         [HttpPost]
-        public IActionResult AdicionaDiretor ([FromBody] CreateDiretorDto diretorDto)
+        public IActionResult AdicionaDiretor ([FromBody] DiretorDTO diretorDto)
         {
         
             Diretor diretor = _mapper.Map<Diretor>(diretorDto);
             _DiretorContext.Adiciona(diretor);
-            ReadDiretorDto ReaddiretorDto = _mapper.Map<ReadDiretorDto>(diretor);
+            DiretorDTO ReaddiretorDto = _mapper.Map<DiretorDTO>(diretor);
             return Ok(ReaddiretorDto);
 
         }
@@ -41,7 +41,7 @@ namespace FilmesAPI.Controllers
 
             var diretores = _DiretorContext.BuscaTodos();
   
-            var ReaddiretoresDto = _mapper.Map<IEnumerable<CreateDiretorDto>>(diretores);
+            var ReaddiretoresDto = _mapper.Map<IEnumerable<DiretorDTO>>(diretores);
             return Ok(ReaddiretoresDto);
         }
         
@@ -55,7 +55,7 @@ namespace FilmesAPI.Controllers
             {
                 return NotFound("O Diretor não foi encontrado");
             }
-            var readDiretor = _mapper.Map<ReadDiretorDto>(diretor);
+            var readDiretor = _mapper.Map<DiretorDTO>(diretor);
             return Ok(readDiretor);
        
         
@@ -70,10 +70,45 @@ namespace FilmesAPI.Controllers
             {
                 return NotFound("O Diretor não foi encontrado");
             }
+            if (diretor.FilmeDiretor.Count != 0)
+            {
+                return BadRequest("Diretor possui filmes associados");
+            }
+            if (diretor.TemporadaDiretor.Count != 0)
+            {
+                return BadRequest("Diretor possui temporadas associados");
+            }
 
             _DiretorContext.Remove(diretor);
             
             return NoContent();
+        }
+        
+        
+        [HttpPatch("{id}")]
+        public IActionResult Diretor(int id, [FromBody] DiretorDTO diretorDTO)
+        {
+            Diretor diretor = _DiretorContext.BuscaPorId(id);
+            if (diretor == null)
+            {
+                return NotFound("Diretor não encontrado");
+            }
+
+            if (diretorDTO.NomeCompleto != null)
+            {
+                diretor.NomeCompleto = diretorDTO.NomeCompleto;
+            }
+            if (diretorDTO.DataNascimento != null)
+            {
+                diretor.DataNascimento = diretorDTO.DataNascimento;
+            }
+            
+            _DiretorContext.Update(diretor);
+            
+            var updateDiretorDto = _mapper.Map<DiretorDTO>(diretor);
+        
+            return Ok(updateDiretorDto);
+        
         }
 
     }

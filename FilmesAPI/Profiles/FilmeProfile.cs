@@ -1,4 +1,5 @@
 using AutoMapper;
+using FilmesAPI.DTOs.Ator;
 using FilmesAPI.Entidades;
 using FilmesAPI.Models.Dtos;
 
@@ -8,11 +9,15 @@ namespace FilmesAPI.Profiles
     {
         public FilmeProfile()
         {
-            CreateMap<Filme, ReadFilmeDto>();
-            CreateMap<CreateFilmeDto, Filme>();
-            CreateMap<Filme, ReadFilmeDto>();
+            CreateMap<FilmeDTO, Filme>();
+            CreateMap<Filme, FilmeDTO>();
+            CreateMap<Filme, FilmeAgreçõesDTO>().ForMember(dest => dest.Atores,
+                opt => opt.MapFrom(src => src.FilmeAtor))
+                .ForMember(dest => dest.Diretores, 
+                    opt => opt.MapFrom(src =>src.FilmeDiretor));
             CreateMap<UpdateFilmeDto, Filme>();
-            CreateMap<Filme,ReadFilmeSemOscarDTO>();
+            CreateMap<FilmeAtor, AtorFilmeDTO>();
+            CreateMap<FilmeGenero, FilmeGeneroDTO>();
         } 
     }
 }

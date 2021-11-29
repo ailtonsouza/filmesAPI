@@ -16,13 +16,13 @@ namespace FilmesAPI.Entidades
         public virtual int NumeroDaTemporada { get; set; }
         
         [Required(ErrorMessage = "")]
-        public virtual ISet<Epsodio> Epsodio { get; set; }
+        public virtual IList<Epsodio> Epsodio { get; set; }
         
         [Required(ErrorMessage = "O campo diretor é obrigatório")]
-        public virtual IList<Diretor> Diretor { get; set; }
+        public virtual IList<TemporadaAtor> TemporadaAtor { get; set; }
         
         [Required(ErrorMessage = "O campo diretor é obrigatório")]
-        public virtual IList<Ator> Ator { get; set; }
+        public virtual IList<TemporadaDiretor> TemporadaDiretor { get; set; }
         
     }
 }

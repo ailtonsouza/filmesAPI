@@ -1,4 +1,5 @@
 using AutoMapper;
+using FilmesAPI.DTOs.Ator;
 using FilmesAPI.Dtos.Diretor;
 using FilmesAPI.Entidades;
 
@@ -8,9 +9,10 @@ namespace FilmesAPI.Profiles
     {
         public DiretorProfile()
         {
-            CreateMap<CreateDiretorDto, Diretor>();
-            CreateMap<Diretor, CreateDiretorDto>();
-            CreateMap<Diretor, ReadDiretorDto>();
+            CreateMap<DiretorDTO, Diretor>();
+            CreateMap<Diretor, DiretorDTO>();
+            CreateMap<FilmeDiretor, DiretorFilme>();
+            CreateMap<TemporadaDiretor, DiretorTemporadaDTO>();
         }
     }
 }
