@@ -20,25 +20,25 @@ namespace FilmesAPI.Controllers
     [Route("[controller]")]
     public class FilmeController :ControllerBase
     {
-        private FilmeAtorDAO _filmeAtorDaoContext;
-        private FilmeDAO _filmeDaocontext;
-        private DiretorDAO _diretorDaocontext;
-        private AtorDAO _atorDaocontext;
-        private GeneroDAO _generoDaocontext;
-        private FilmeGeneroDAO _filmeGeneroDaocontext;
-        private FilmeDiretorDAO _filmeDiretorDaocontext;
+        private GenericDao<FilmeAtor> _filmeAtorDaoContext;
+        private GenericDao<Filme> _filmeDaocontext;
+        private GenericDao<Diretor> _diretorDaocontext;
+        private GenericDao<Ator> _atorDaocontext;
+        private GenericDao<FilmeGenero> _filmeGeneroDaocontext;
+        private GenericDao<FilmeDiretor> _filmeDiretorDaocontext;
+        private GenericDao<Genero> _generoDaocontext;
         private IMapper _mapper;
 
         public FilmeController(IMapper mapper, ISession session)
         {
             _mapper = mapper;
-            _filmeDaocontext = new FilmeDAO(session);
-            _diretorDaocontext = new DiretorDAO(session);
-            _atorDaocontext = new AtorDAO(session);
-            _generoDaocontext = new GeneroDAO(session);
-            _filmeAtorDaoContext = new FilmeAtorDAO(session);
-            _filmeGeneroDaocontext = new FilmeGeneroDAO(session);
-            _filmeDiretorDaocontext = new FilmeDiretorDAO(session);
+            _filmeDaocontext = new GenericDao<Filme>(session);
+            _diretorDaocontext = new GenericDao<Diretor>(session);
+            _atorDaocontext = new GenericDao<Ator> (session);
+            _generoDaocontext = new GenericDao<Genero>(session);
+            _filmeAtorDaoContext = new GenericDao<FilmeAtor>(session);
+            _filmeGeneroDaocontext = new GenericDao<FilmeGenero>(session);
+            _filmeDiretorDaocontext = new GenericDao<FilmeDiretor>(session);
         }
 
         [HttpPost]
@@ -52,7 +52,6 @@ namespace FilmesAPI.Controllers
                 var createFilmeDto = _mapper.Map<FilmeDTO>(filme);
                 
                 return CreatedAtAction(nameof(RecuperarFilmesPorId), new { Id = filme.Id }, createFilmeDto);
-               return Ok();
         }
         
         [HttpGet]
@@ -135,12 +134,8 @@ namespace FilmesAPI.Controllers
                 return NotFound("Registro não encontrado");
             }
 
-
             _filmeAtorDaoContext.Remove(filmeAtor);
 
-            
- 
-            
             return NoContent();
         
         }
@@ -157,7 +152,6 @@ namespace FilmesAPI.Controllers
             _filmeDiretorDaocontext.Remove(filmeDiretor);
             
             return NoContent();
-        
         }
         
         [HttpDelete("RemoveGenero")]
@@ -172,14 +166,12 @@ namespace FilmesAPI.Controllers
             _filmeGeneroDaocontext.Remove(filmeGenero);
             
             return NoContent();
-        
         }
         
         
         [HttpPatch("{id}/AddActor")]
         public IActionResult AssociarAtor(int id, [FromBody] AtorFilmeDTO af)
         {
-
             
             Filme filme = _filmeDaocontext.BuscaPorId(id);
             if (filme == null)
@@ -218,9 +210,8 @@ namespace FilmesAPI.Controllers
             {
                 return NotFound();
             }
-            
-            
-             Genero genero = _generoDaocontext.BuscaTodos().FirstOrDefault(genero => genero.Id == generoDto.Id);
+
+            Genero genero = _generoDaocontext.BuscaTodos().FirstOrDefault(genero => genero.Id == generoDto.Id);
              if (genero == null)
              {
                  return NotFound();
@@ -237,7 +228,6 @@ namespace FilmesAPI.Controllers
             var updatedFilmeDto = _mapper.Map<FilmeAgreçõesDTO>(filme);
             
             return Ok(updatedFilmeDto);
-            return Ok(filme);
         }
         
         [HttpPatch("{id}/AddDiretor")]

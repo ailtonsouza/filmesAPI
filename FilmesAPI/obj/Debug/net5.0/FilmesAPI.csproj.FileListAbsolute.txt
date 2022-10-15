@@ -58,7 +58,6 @@ C:\Users\ailto\Desktop\Programação\FilmesAPI\FilmesAPI\bin\Debug\net5.0\Filmes
 C:\Users\ailto\Desktop\Programação\FilmesAPI\FilmesAPI\bin\Debug\net5.0\FilmesAPI.runtimeconfig.json
 C:\Users\ailto\Desktop\Programação\FilmesAPI\FilmesAPI\bin\Debug\net5.0\FilmesAPI.runtimeconfig.dev.json
 C:\Users\ailto\Desktop\Programação\FilmesAPI\FilmesAPI\bin\Debug\net5.0\FilmesAPI.dll
-C:\Users\ailto\Desktop\Programação\FilmesAPI\FilmesAPI\bin\Debug\net5.0\ref\FilmesAPI.dll
 C:\Users\ailto\Desktop\Programação\FilmesAPI\FilmesAPI\bin\Debug\net5.0\FilmesAPI.pdb
 C:\Users\ailto\Desktop\Programação\FilmesAPI\FilmesAPI\bin\Debug\net5.0\Antlr3.Runtime.dll
 C:\Users\ailto\Desktop\Programação\FilmesAPI\FilmesAPI\bin\Debug\net5.0\AutoMapper.dll
@@ -94,10 +93,11 @@ C:\Users\ailto\Desktop\Programação\FilmesAPI\FilmesAPI\obj\Debug\net5.0\Filmes
 C:\Users\ailto\Desktop\Programação\FilmesAPI\FilmesAPI\obj\Debug\net5.0\FilmesAPI.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\ailto\Desktop\Programação\FilmesAPI\FilmesAPI\obj\Debug\net5.0\FilmesAPI.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\ailto\Desktop\Programação\FilmesAPI\FilmesAPI\obj\Debug\net5.0\staticwebassets\FilmesAPI.StaticWebAssets.Manifest.cache
-C:\Users\ailto\Desktop\Programação\FilmesAPI\FilmesAPI\obj\Debug\net5.0\staticwebassets\FilmesAPI.StaticWebAssets.xml
 C:\Users\ailto\Desktop\Programação\FilmesAPI\FilmesAPI\obj\Debug\net5.0\scopedcss\bundle\FilmesAPI.styles.css
 C:\Users\ailto\Desktop\Programação\FilmesAPI\FilmesAPI\obj\Debug\net5.0\FilmesAPI.RazorTargetAssemblyInfo.cache
 C:\Users\ailto\Desktop\Programação\FilmesAPI\FilmesAPI\obj\Debug\net5.0\FilmesAPI.dll
 C:\Users\ailto\Desktop\Programação\FilmesAPI\FilmesAPI\obj\Debug\net5.0\ref\FilmesAPI.dll
 C:\Users\ailto\Desktop\Programação\FilmesAPI\FilmesAPI\obj\Debug\net5.0\FilmesAPI.pdb
 C:\Users\ailto\Desktop\Programação\FilmesAPI\FilmesAPI\obj\Debug\net5.0\FilmesAPI.genruntimeconfig.cache
+C:\Users\ailto\Desktop\Programação\FilmesAPI\FilmesAPI\obj\Debug\net5.0\FilmesAPI.csproj.CopyComplete
+C:\Users\ailto\Desktop\Programação\FilmesAPI\FilmesAPI\obj\Debug\net5.0\refint\FilmesAPI.dll

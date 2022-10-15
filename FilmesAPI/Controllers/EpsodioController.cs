@@ -14,8 +14,8 @@ namespace FilmesAPI.Controllers
     public class EpsodioController : ControllerBase
 
     {
-    private EpsodioDAO _Epsodiocontext;
-    private TemporadaDAO _TemporaContext;
+    private GenericDao<Epsodio> _Epsodiocontext;
+    private GenericDao<Temporada> _TemporaContext;
     private IMapper _mapper;
 
     
@@ -23,8 +23,8 @@ namespace FilmesAPI.Controllers
     public EpsodioController(IMapper mapper, ISession session)
     {
         _mapper = mapper;
-        _Epsodiocontext = new EpsodioDAO(session);
-        _TemporaContext = new TemporadaDAO(session);
+        _Epsodiocontext = new GenericDao<Epsodio>(session);
+        _TemporaContext = new GenericDao<Temporada>(session);
     }
 
     [HttpPost]

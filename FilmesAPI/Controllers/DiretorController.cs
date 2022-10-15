@@ -15,13 +15,13 @@ namespace FilmesAPI.Controllers
     [Route("[controller]")]
     public class DiretorController :ControllerBase
     {
-        private DiretorDAO _DiretorContext;
+        private GenericDao<Diretor> _DiretorContext;
         private IMapper _mapper;
 
         public DiretorController(IMapper mapper, ISession session)
         {
             _mapper = mapper;
-            _DiretorContext = new DiretorDAO(session);
+            _DiretorContext = new GenericDao<Diretor>(session);
         }
         
         [HttpPost]

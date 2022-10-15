@@ -4,8 +4,7 @@
         <property name="connection.provider">NHibernate.Connection.DriverConnectionProvider</property>
         <property name="dialect">NHibernate.Dialect.MsSql2012Dialect</property>
         <property name="connection.connection_string">
-
-            Server=localhost; Database=Filme; Uid=sa; Pwd=Fluminense@2720
+            Server=localhost; Database=Filme; Uid=sa; Pwd=drake5243
         </property>
         <property name="show_sql">true</property>
         <property name="format_sql">true</property>

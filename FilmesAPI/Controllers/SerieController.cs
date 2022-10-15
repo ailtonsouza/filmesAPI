@@ -18,17 +18,17 @@ namespace FilmesAPI.Controllers
     [Route("[controller]")]
     public class SerieController : ControllerBase
     {
-        private SerieDAO _SerieContext;
-        private FilmeDAO _filmeDaocontext;
-        private GeneroDAO _generoDaocontext;
-        private SerieGeneroDAO _serieGeneroDaoContext;
+        private GenericDao<Serie> _SerieContext;
+        private GenericDao<Filme> _filmeDaocontext;
+        private GenericDao<Genero> _generoDaocontext;
+        private GenericDao<SerieGenero> _serieGeneroDaoContext;
         private IMapper _mapper;
         
         public SerieController(IMapper mapper, ISession session)
         {
-            _SerieContext = new SerieDAO(session);
-            _generoDaocontext = new GeneroDAO(session);
-            _serieGeneroDaoContext = new SerieGeneroDAO(session);
+            _SerieContext = new GenericDao<Serie>(session);
+            _generoDaocontext = new GenericDao<Genero>(session);
+            _serieGeneroDaoContext = new GenericDao<SerieGenero>(session);
             _mapper = mapper;
         }
     

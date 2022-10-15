@@ -16,18 +16,18 @@ namespace FilmesAPI.Controllers
     [Route("[controller]")]
     public class TemporadaController : ControllerBase
     {
-        private TemporadaDAO _TemporaContext;
-        private SerieDAO _SerieContext;
-        private AtorDAO _AtorContext;
-        private DiretorDAO _DiretorContext;
+        private GenericDao<Temporada> _TemporaContext;
+        private GenericDao<Serie> _SerieContext;
+        private GenericDao<Ator> _AtorContext;
+        private GenericDao<Diretor> _DiretorContext;
         private IMapper _mapper;
 
         public TemporadaController(IMapper mapper, ISession session)
         {
-            _TemporaContext = new TemporadaDAO(session);
-            _SerieContext = new SerieDAO(session);
-            _AtorContext = new AtorDAO(session);
-            _DiretorContext = new DiretorDAO(session);
+            _TemporaContext = new GenericDao<Temporada>(session);
+            _SerieContext = new GenericDao<Serie>(session);
+            _AtorContext = new GenericDao<Ator>(session);
+            _DiretorContext = new GenericDao<Diretor>(session);
             _mapper = mapper;
         }
 

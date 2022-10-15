@@ -1,47 +1,46 @@
-using System.Collections.Generic;
-using FilmesAPI.Entidades;
+﻿using System.Collections.Generic;
 using NHibernate;
 
 namespace FilmesAPI.DAO
 {
-    public class SerieDAO
+    public class GenericDao<T>
     {
         private ISession session;
         
-        public SerieDAO(ISession session)
+        public GenericDao(ISession session)
         {
             this.session = session;
         }
         
-        public void Adiciona(Serie serie)
+        public void Adiciona(T item)
         {
             ITransaction transacao = session.BeginTransaction();
-            session.Save(serie);
+            session.Save(item);
             transacao.Commit();
         }
         
-        public Serie BuscaPorId(int id)
+        public T BuscaPorId(int id)
         {
-            return session.Get<Serie>(id);
+            return session.Get<T>(id);
         }
         
-        public IEnumerable<Serie> BuscaTodos()
+        
+        public IEnumerable<T>  BuscaTodos()
         {
-            return session.Query<Serie>();
+            return session.Query<T>();
         }
         
-        public void Remove(Serie serie)
+        public void Remove(T item)
         {
             ITransaction transacao = session.BeginTransaction();
-            session.Delete(serie);
+            session.Delete(item);
             transacao.Commit();
         }
         
-        
-        public void Update(Serie serie)
+        public void Update(T item)
         {
             ITransaction transacao = session.BeginTransaction();
-            session.Save(serie);
+            session.Save(item);
             transacao.Commit();
         }
     }

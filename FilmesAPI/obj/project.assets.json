@@ -6355,20 +6355,24 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ailto\\Desktop\\Programação\\FilmesAPI\\FilmesAPI\\FilmesAPI.csproj",
+      "projectUniqueName": "C:\\Users\\ailto\\Desktop\\Programação\\filmesAPI\\FilmesAPI\\FilmesAPI.csproj",
       "projectName": "FilmesAPI",
-      "projectPath": "C:\\Users\\ailto\\Desktop\\Programação\\FilmesAPI\\FilmesAPI\\FilmesAPI.csproj",
+      "projectPath": "C:\\Users\\ailto\\Desktop\\Programação\\filmesAPI\\FilmesAPI\\FilmesAPI.csproj",
       "packagesPath": "C:\\Users\\ailto\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ailto\\Desktop\\Programação\\FilmesAPI\\FilmesAPI\\obj\\",
+      "outputPath": "C:\\Users\\ailto\\Desktop\\Programação\\filmesAPI\\FilmesAPI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\ailto\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\ailto\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
       ],
       "sources": {
-        "https://api.nuget.org/v3/index.json": {}
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Users\\ailto\\AppData\\Roaming\\NuGet": {},
+        "https://api.nuget.org/v3/index.json": {},
+        "https://www.myget.org/F/constant/auth/4b62fd6c-71b2-48ea-bd2f-6eb85068f0fc/api/v3/index.json": {}
       },
       "frameworks": {
         "net5.0": {
@@ -6417,6 +6421,12 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.NETCore.App.Host.win-x64",
+            "version": "[5.0.17, 5.0.17]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -6425,7 +6435,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
       }
     }
   }

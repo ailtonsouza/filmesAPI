@@ -14,17 +14,16 @@ namespace FilmesAPI.Controllers
     [Route("[controller]")]
     public class AtorController :ControllerBase
     {
-        private AtorDAO _AtorContext;
+        private GenericDao<Ator> _AtorContext;
         private IMapper _mapper;
 
         public AtorController(IMapper mapper, ISession session)
         {
             _mapper = mapper;
-            _AtorContext = new AtorDAO(session);
+            _AtorContext = new GenericDao<Ator>(session);
         }
         
         [HttpGet]
-  
         public IActionResult BuscarTodos()
         {
             var atores = _AtorContext.BuscaTodos();
@@ -51,7 +50,6 @@ namespace FilmesAPI.Controllers
             {
                 return NotFound("Ator não encontrado");
             }
-
             if (ator.FilmeAtor.Count != 0)
             {
                 return BadRequest("Ator possui filmes associados");

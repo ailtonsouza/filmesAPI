@@ -13,14 +13,14 @@ namespace FilmesAPI.Controllers
     [Route("[controller]")]
     public class OscarController : ControllerBase
     {
-        private OscarDAO _OscarContext;
-         private FilmeDAO _FilmeContext;
+        private GenericDao<Oscar> _OscarContext;
+         private GenericDao<Filme> _FilmeContext;
         private IMapper _mapper;
         
         public OscarController(IMapper mapper, ISession session)
         {
-            _FilmeContext = new FilmeDAO(session);
-            _OscarContext = new OscarDAO(session);
+            _FilmeContext = new GenericDao<Filme>(session);
+            _OscarContext = new GenericDao<Oscar>(session);
             _mapper = mapper;
         } 
         

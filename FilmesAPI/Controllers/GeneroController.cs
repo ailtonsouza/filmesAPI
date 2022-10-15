@@ -13,13 +13,13 @@ namespace FilmesAPI.Controllers
     [Route("[controller]")]
     public class GeneroController : ControllerBase
     {
-        private GeneroDAO _GeneroContext;
+        private GenericDao<Genero> _GeneroContext;
         private IMapper _mapper;
 
         public GeneroController(IMapper mapper, ISession session)
         {
             _mapper = mapper;
-            _GeneroContext = new GeneroDAO(session);
+            _GeneroContext = new GenericDao<Genero>(session);
         }
 
         public IActionResult AdicionaGenero([FromBody] GeneroDTO generoDTO)
