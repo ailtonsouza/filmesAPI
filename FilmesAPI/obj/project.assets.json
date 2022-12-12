@@ -43,6 +43,18 @@
           "lib/netstandard1.3/AutoMapper.dll": {}
         }
       },
+      "FluentNHibernate/3.1.0": {
+        "type": "package",
+        "dependencies": {
+          "NHibernate": "5.3.3"
+        },
+        "compile": {
+          "lib/netcoreapp2.0/FluentNHibernate.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp2.0/FluentNHibernate.dll": {}
+        }
+      },
       "Iesi.Collections/4.0.4": {
         "type": "package",
         "dependencies": {
@@ -1836,6 +1848,27 @@
         "lib/netstandard1.1/AutoMapper.xml",
         "lib/netstandard1.3/AutoMapper.dll",
         "lib/netstandard1.3/AutoMapper.xml"
+      ]
+    },
+    "FluentNHibernate/3.1.0": {
+      "sha512": "hPBdWol6CRPDoG6Qfmy14uR7zwrQB9ElitQhSIei829I1lMmVvoK9C0eFux8tMuCeNKi0NeDl0+4JFj+O32zQw==",
+      "type": "package",
+      "path": "fluentnhibernate/3.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "fluentnhibernate.3.1.0.nupkg.sha512",
+        "fluentnhibernate.nuspec",
+        "lib/net461/FluentNHibernate.dll",
+        "lib/net461/FluentNHibernate.pdb",
+        "lib/net461/FluentNHibernate.xml",
+        "lib/netcoreapp2.0/FluentNHibernate.dll",
+        "lib/netcoreapp2.0/FluentNHibernate.pdb",
+        "lib/netcoreapp2.0/FluentNHibernate.xml",
+        "lib/netstandard2.0/FluentNHibernate.dll",
+        "lib/netstandard2.0/FluentNHibernate.pdb",
+        "lib/netstandard2.0/FluentNHibernate.xml",
+        "logo-nuget.png"
       ]
     },
     "Iesi.Collections/4.0.4": {
@@ -6342,6 +6375,7 @@
   },
   "projectFileDependencyGroups": {
     "net5.0": [
+      "FluentNHibernate >= 3.1.0",
       "Microsoft.AspNetCore.Mvc.NewtonsoftJson >= 5.0.9",
       "NHibernate >= 5.3.9",
       "Swashbuckle.AspNetCore >= 5.6.3",
@@ -6390,6 +6424,10 @@
       "net5.0": {
         "targetAlias": "net5.0",
         "dependencies": {
+          "FluentNHibernate": {
+            "target": "Package",
+            "version": "[3.1.0, )"
+          },
           "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
             "target": "Package",
             "version": "[5.0.9, )"

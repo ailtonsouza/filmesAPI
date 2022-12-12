@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "/AZh+qbXuV8WayP4lRHi1s/UQekuSH5W4vUjcjeUYe+EEiun8+PiXaLOJMG5wtTRR4agTltlPna3rDsKs4UUGQ==",
+  "dgSpecHash": "MMq1TZ7cWorlfkcutJ3OqQrcxZ3g0ijzMuYRLyLn75yyiuJO8xpy6+kagsMxM48aDaoyy2EwEVqbDzXtwwwgSw==",
   "success": true,
   "projectFilePath": "C:\\Users\\ailto\\Desktop\\Programação\\filmesAPI\\FilmesAPI\\FilmesAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ailto\\.nuget\\packages\\antlr3.runtime\\3.5.1\\antlr3.runtime.3.5.1.nupkg.sha512",
     "C:\\Users\\ailto\\.nuget\\packages\\automapper\\6.1.1\\automapper.6.1.1.nupkg.sha512",
+    "C:\\Users\\ailto\\.nuget\\packages\\fluentnhibernate\\3.1.0\\fluentnhibernate.3.1.0.nupkg.sha512",
     "C:\\Users\\ailto\\.nuget\\packages\\iesi.collections\\4.0.4\\iesi.collections.4.0.4.nupkg.sha512",
     "C:\\Users\\ailto\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\5.0.9\\microsoft.aspnetcore.jsonpatch.5.0.9.nupkg.sha512",
     "C:\\Users\\ailto\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\5.0.9\\microsoft.aspnetcore.mvc.newtonsoftjson.5.0.9.nupkg.sha512",

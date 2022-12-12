@@ -33,6 +33,7 @@
     ".NETCoreApp,Version=v5.0": {
       "FilmesAPI/1.0.0": {
         "dependencies": {
+          "FluentNHibernate": "3.1.0",
           "Microsoft.AspNetCore.Mvc.NewtonsoftJson": "5.0.9",
           "NHibernate": "5.3.9",
           "Swashbuckle.AspNetCore": "5.6.3",
@@ -372,6 +373,20 @@
         },
         "compile": {
           "lib/netstandard1.3/AutoMapper.dll": {}
+        }
+      },
+      "FluentNHibernate/3.1.0": {
+        "dependencies": {
+          "NHibernate": "5.3.9"
+        },
+        "runtime": {
+          "lib/netcoreapp2.0/FluentNHibernate.dll": {
+            "assemblyVersion": "3.1.0.0",
+            "fileVersion": "3.1.0.0"
+          }
+        },
+        "compile": {
+          "lib/netcoreapp2.0/FluentNHibernate.dll": {}
         }
       },
       "Iesi.Collections/4.0.4": {
@@ -3212,6 +3227,13 @@
       "sha512": "sha512-A+6PAblvzmkXPS20nFBQJvlNSW5oEdyfN5+cxT/Du35fTNyuP5pNDXT64KT/jBgxt7CPduOM0Y7oLnNe0E5IXg==",
       "path": "automapper/6.1.1",
       "hashPath": "automapper.6.1.1.nupkg.sha512"
+    },
+    "FluentNHibernate/3.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-hPBdWol6CRPDoG6Qfmy14uR7zwrQB9ElitQhSIei829I1lMmVvoK9C0eFux8tMuCeNKi0NeDl0+4JFj+O32zQw==",
+      "path": "fluentnhibernate/3.1.0",
+      "hashPath": "fluentnhibernate.3.1.0.nupkg.sha512"
     },
     "Iesi.Collections/4.0.4": {
       "type": "package",

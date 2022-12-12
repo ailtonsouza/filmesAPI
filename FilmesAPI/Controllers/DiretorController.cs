@@ -3,9 +3,7 @@ using System.Linq;
 using AutoMapper;
 using FilmesAPI.DAO;
 using FilmesAPI.Dtos.Diretor;
-using FilmesAPI.Dtos.Genero;
 using FilmesAPI.Entidades;
-using FilmesAPI.Models.Dtos;
 using Microsoft.AspNetCore.Mvc;
 using NHibernate;
 

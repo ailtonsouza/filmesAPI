@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using AutoMapper;
 using FilmesAPI.DAO;
@@ -12,114 +11,103 @@ namespace FilmesAPI.Controllers
     [ApiController]
     [Route("[controller]")]
     public class EpsodioController : ControllerBase
-
     {
-    private GenericDao<Epsodio> _Epsodiocontext;
-    private GenericDao<Temporada> _TemporaContext;
-    private IMapper _mapper;
-
-    
-    
-    public EpsodioController(IMapper mapper, ISession session)
-    {
-        _mapper = mapper;
-        _Epsodiocontext = new GenericDao<Epsodio>(session);
-        _TemporaContext = new GenericDao<Temporada>(session);
-    }
-
-    [HttpPost]
-    public IActionResult AdicionaEpsodio([FromBody] EpsodioDTO epsodioDto)
-    {
-
-         Epsodio epsodio = _mapper.Map<Epsodio>(epsodioDto);
-     
-         Temporada temporada = _TemporaContext.BuscaPorId(epsodioDto.TemporadaId);
-         if (temporada == null)
-         {
-             return NotFound("Temporada não encontrada\\informada");
-         }
-         epsodio.Temporada = temporada;
-         _Epsodiocontext.Adiciona(epsodio);
-         EpsodioDTO ep = _mapper.Map<EpsodioDTO>(epsodio);
-        return Ok(ep);
-    }
-
-
-    [HttpGet]
-    public IActionResult BuscarTodos()
-    {
-        var epsodio = _Epsodiocontext.BuscaTodos();
-        var ep = _mapper.Map<IList<EpsodioTemporadaDTO>>(epsodio);
-        return Ok(ep);
-    }
-    
-    [HttpGet ("{id}")]
-    public IActionResult BuscarEpsodioPorId(int id)
-    {
-
-        var epsodio = _Epsodiocontext.BuscaPorId(id);
-        if (epsodio == null)
+        private GenericDao<Epsodio> _Epsodiocontext;
+        private GenericDao<Temporada> _TemporaContext;
+        private IMapper _mapper;
+        public EpsodioController(IMapper mapper, ISession session)
         {
-            return NotFound("Epsodio não foi encontrado");
-        }
-        var epsodioDto = _mapper.Map<EpsodioTemporadaDTO>(epsodio);
-        return Ok(epsodioDto);
-    }
-    
-    
-    [HttpDelete("{id}")]
-    public IActionResult RemoveEpsodioPorId(int id)
-    {
-        var epsodio =  _Epsodiocontext.BuscaPorId(id);
-            
-        if (epsodio == null)
-        {
-            return NotFound("O Epsodio não foi encontrado");
+            _mapper = mapper;
+            _Epsodiocontext = new GenericDao<Epsodio>(session);
+            _TemporaContext = new GenericDao<Temporada>(session);
         }
 
-        _Epsodiocontext.Remove(epsodio);
-            
-        return NoContent();
-    }
-    
-    
-    
-    [HttpPatch("{id}")]
-    public IActionResult AtualizaEpsodio(int id, [FromBody] EpsodioDTO epsodioDTO)
-    {
-        Epsodio epsodio = _Epsodiocontext.BuscaPorId(id);
-        if (epsodio == null)
+        [HttpPost]
+        public IActionResult AdicionaEpsodio([FromBody] EpsodioDTO epsodioDto)
         {
-            return NotFound("Epsodio não encontrado");
+
+             Epsodio epsodio = _mapper.Map<Epsodio>(epsodioDto);
+         
+             Temporada temporada = _TemporaContext.BuscaPorId(epsodioDto.TemporadaId);
+             if (temporada == null)
+             {
+                 return NotFound("Temporada não encontrada\\informada");
+             }
+             epsodio.Temporada = temporada;
+             _Epsodiocontext.Adiciona(epsodio);
+             EpsodioDTO ep = _mapper.Map<EpsodioDTO>(epsodio);
+            return Ok(ep);
         }
-            
-        if (epsodioDTO.Titulo != null)
+
+        [HttpGet]
+        public IActionResult BuscarTodos()
         {
-            epsodio.Titulo = epsodioDTO.Titulo;
+            var epsodio = _Epsodiocontext.BuscaTodos();
+            var ep = _mapper.Map<IList<EpsodioTemporadaDTO>>(epsodio);
+            return Ok(ep);
         }
         
-        if (epsodioDTO.Duracao != null)
+        [HttpGet ("{id}")]
+        public IActionResult BuscarEpsodioPorId(int id)
         {
-            epsodio.Duracao = epsodioDTO.Duracao;
+
+            var epsodio = _Epsodiocontext.BuscaPorId(id);
+            if (epsodio == null)
+            {
+                return NotFound("Epsodio não foi encontrado");
+            }
+            var epsodioDto = _mapper.Map<EpsodioTemporadaDTO>(epsodio);
+            return Ok(epsodioDto);
         }
         
-        if (epsodioDTO.NumeroEpsodio != null)
+        [HttpDelete("{id}")]
+        public IActionResult RemoveEpsodioPorId(int id)
         {
-            epsodio.NumeroEpsodio = epsodioDTO.NumeroEpsodio;
+            var epsodio =  _Epsodiocontext.BuscaPorId(id);
+                
+            if (epsodio == null)
+            {
+                return NotFound("O Epsodio não foi encontrado");
+            }
+
+            _Epsodiocontext.Remove(epsodio);
+                
+            return NoContent();
         }
-    
-        _Epsodiocontext.Update(epsodio);
+        
+        [HttpPatch("{id}")]
+        public IActionResult AtualizaEpsodio(int id, [FromBody] EpsodioDTO epsodioDTO)
+        {
+            Epsodio epsodio = _Epsodiocontext.BuscaPorId(id);
+            if (epsodio == null)
+            {
+                return NotFound("Epsodio não encontrado");
+            }
+                
+            if (epsodioDTO.Titulo != null)
+            {
+                epsodio.Titulo = epsodioDTO.Titulo;
+            }
             
-        var updateEpsodioDto = _mapper.Map<EpsodioDTO>(epsodio);
+            if (epsodioDTO.Duracao != null)
+            {
+                epsodio.Duracao = epsodioDTO.Duracao;
+            }
+            
+            if (epsodioDTO.NumeroEpsodio != null)
+            {
+                epsodio.NumeroEpsodio = epsodioDTO.NumeroEpsodio;
+            }
         
-        return Ok(updateEpsodioDto);
-        
-    }
+            _Epsodiocontext.Update(epsodio);
+                
+            var updateEpsodioDto = _mapper.Map<EpsodioDTO>(epsodio);
+            
+            return Ok(updateEpsodioDto);
+            
+        }
 
-
-    
-    
-    [HttpPatch("{id}/Temporada")]
+        [HttpPatch("{id}/Temporada")]
         public IActionResult AtualizaTemporada(int id, [FromBody] EpsodioDTO epsodioDTO)
         {
         
@@ -129,17 +117,14 @@ namespace FilmesAPI.Controllers
                 return NotFound("Epsodio não foi encontrado");
             }
             
+            Temporada temporada = _TemporaContext.BuscaPorId(epsodioDTO.TemporadaId);
+            if (temporada == null)
+            {
+               return NotFound("Temporada não encontrada'\'não informada");
+            }
 
-      
-                Temporada temporada = _TemporaContext.BuscaPorId(epsodioDTO.TemporadaId);
-                if (temporada == null)
-                {
-                    return NotFound("Temporada não encontrada'\'não informada");
-                }
-
-                epsodio.Temporada = temporada;
+            epsodio.Temporada = temporada;
        
-            
             _Epsodiocontext.Update(epsodio);
             
             var updateEpsodioDto = _mapper.Map<EpsodioDTO>(epsodio);
@@ -147,13 +132,5 @@ namespace FilmesAPI.Controllers
             return Ok(updateEpsodioDto);
 
         }
-    
-    
-    
-    
-
-
     }
-    
-    
 }

@@ -103,10 +103,5 @@ namespace FilmesAPI.Controllers
             return Ok(updateGeneroDto);
         
         }
-
-
-
-
-
     }
 }

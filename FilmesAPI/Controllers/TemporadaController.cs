@@ -1,14 +1,13 @@
- using System.Collections.Generic;
- using System.Linq;
- using System.Net;
- using AutoMapper;
+using System.Collections.Generic;
+using System.Linq;
+using AutoMapper;
 using FilmesAPI.DAO;
 using FilmesAPI.DTOs.Ator;
 using FilmesAPI.Dtos.Diretor;
 using FilmesAPI.DTOs.Temporada;
- using FilmesAPI.Entidades;
- using Microsoft.AspNetCore.Mvc;
- using NHibernate;
+using FilmesAPI.Entidades;
+using Microsoft.AspNetCore.Mvc;
+using NHibernate;
 
 namespace FilmesAPI.Controllers
 {
@@ -194,6 +193,4 @@ namespace FilmesAPI.Controllers
             return NoContent();
         }
     }
-    
-    
 }

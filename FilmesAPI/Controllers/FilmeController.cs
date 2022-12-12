@@ -1,6 +1,4 @@
-using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using AutoMapper;
 using FilmesAPI.DAO;
@@ -10,15 +8,13 @@ using FilmesAPI.Dtos.Genero;
 using FilmesAPI.Entidades;
 using FilmesAPI.Models.Dtos;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Filters;
-using Newtonsoft.Json;
 using NHibernate;
 
 namespace FilmesAPI.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class FilmeController :ControllerBase
+    public class FilmeController : ControllerBase
     {
         private GenericDao<FilmeAtor> _filmeAtorDaoContext;
         private GenericDao<Filme> _filmeDaocontext;

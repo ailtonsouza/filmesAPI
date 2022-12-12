@@ -1,14 +1,10 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Channels;
 using AutoMapper;
 using FilmesAPI.DAO;
 using FilmesAPI.Dtos.Genero;
 using FilmesAPI.DTOs.Serie;
-using FilmesAPI.DTOs.Temporada;
 using FilmesAPI.Entidades;
-using FilmesAPI.Models.Dtos;
 using Microsoft.AspNetCore.Mvc;
 using NHibernate;
 
@@ -124,7 +120,6 @@ namespace FilmesAPI.Controllers
             {
                 return NotFound("Registro não encontrado");
             }
-
             
             _serieGeneroDaoContext.Remove(serieGenero);
             
@@ -153,7 +148,5 @@ namespace FilmesAPI.Controllers
             return Ok(updateSerieDto);
         
         }
-        
-        
     }
 }

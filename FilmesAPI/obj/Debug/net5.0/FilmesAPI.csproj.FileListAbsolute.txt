@@ -53,7 +53,6 @@
 C:\Users\ailto\Desktop\Programação\FilmesAPI\FilmesAPI\bin\Debug\net5.0\appsettings.Development.json
 C:\Users\ailto\Desktop\Programação\FilmesAPI\FilmesAPI\bin\Debug\net5.0\appsettings.json
 C:\Users\ailto\Desktop\Programação\FilmesAPI\FilmesAPI\bin\Debug\net5.0\FilmesAPI.exe
-C:\Users\ailto\Desktop\Programação\FilmesAPI\FilmesAPI\bin\Debug\net5.0\hibernate.cfg.xml
 C:\Users\ailto\Desktop\Programação\FilmesAPI\FilmesAPI\bin\Debug\net5.0\FilmesAPI.deps.json
 C:\Users\ailto\Desktop\Programação\FilmesAPI\FilmesAPI\bin\Debug\net5.0\FilmesAPI.runtimeconfig.json
 C:\Users\ailto\Desktop\Programação\FilmesAPI\FilmesAPI\bin\Debug\net5.0\FilmesAPI.runtimeconfig.dev.json
@@ -101,3 +100,4 @@ C:\Users\ailto\Desktop\Programação\FilmesAPI\FilmesAPI\obj\Debug\net5.0\Filmes
 C:\Users\ailto\Desktop\Programação\FilmesAPI\FilmesAPI\obj\Debug\net5.0\FilmesAPI.genruntimeconfig.cache
 C:\Users\ailto\Desktop\Programação\FilmesAPI\FilmesAPI\obj\Debug\net5.0\FilmesAPI.csproj.CopyComplete
 C:\Users\ailto\Desktop\Programação\FilmesAPI\FilmesAPI\obj\Debug\net5.0\refint\FilmesAPI.dll
+C:\Users\ailto\Desktop\Programação\filmesAPI\FilmesAPI\bin\Debug\net5.0\FluentNHibernate.dll

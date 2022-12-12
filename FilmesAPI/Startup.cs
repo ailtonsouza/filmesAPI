@@ -1,9 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using AutoMapper;
 using FilmesAPI.Infra;
+using FluentNHibernate.Cfg;
+using FluentNHibernate.Cfg.Db;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -13,6 +16,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using NHibernate.Tool.hbm2ddl;
 
 namespace FilmesAPI
 {
@@ -28,8 +32,18 @@ namespace FilmesAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            
+   
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-            services.AddNHibernate();
+            
+            services.AddScoped(f =>
+            {
+                return NHibernateHelper.AddNHibernate().OpenSession();
+            });
+            
+
+            
+            
             services.AddControllersWithViews()
                 .AddNewtonsoftJson(options =>
                     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore

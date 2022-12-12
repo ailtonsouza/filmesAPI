@@ -4,8 +4,6 @@ namespace FilmesAPI.Entidades
 {
     public class Oscar
     {
-
-        
             [Key]
             [Required]
             public virtual int Id { get; set; }
@@ -15,19 +13,8 @@ namespace FilmesAPI.Entidades
         
             [Required(ErrorMessage = "A categoria é obrigatório")]
             [Range(1, 3, ErrorMessage = "As categorias devem estar em 1 e 3")]
-            public virtual CategoriaOscar Categoria
-            {
-                get; 
-                set;
-            }
-
+            public virtual CategoriaOscar Categoria { get; set; }
             public virtual Filme Filme { get; set; }
-
-            public virtual void AdicionaFilme(Filme filme)
-            {
-                Filme = filme.ValidaOscar(this);
-            }
-
             
     }
 }

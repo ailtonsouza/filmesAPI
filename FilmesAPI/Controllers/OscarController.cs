@@ -35,7 +35,8 @@ namespace FilmesAPI.Controllers
                     return NotFound("O Filme não foi encontrado");
                 }
                 Oscar oscar = _mapper.Map<Oscar>(oscarDTO);
-                oscar.AdicionaFilme(filme);
+                //oscar.AdicionaFilme(filme);
+                oscar.Filme = filme;
                 _OscarContext.Adiciona(oscar);
                 
                 var readOscar = 
@@ -93,9 +94,5 @@ namespace FilmesAPI.Controllers
             
             return NoContent();
         }
-        
-
-        
-
     }
 }
