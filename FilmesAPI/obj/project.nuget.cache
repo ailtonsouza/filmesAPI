@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "MMq1TZ7cWorlfkcutJ3OqQrcxZ3g0ijzMuYRLyLn75yyiuJO8xpy6+kagsMxM48aDaoyy2EwEVqbDzXtwwwgSw==",
+  "dgSpecHash": "9sM7S1jdfeTqFiBo8LQihR+c5IGYOLS4sdzVN/XrpeS6eIK8fojY8EVMX9l0roTIGq97j22KDrHYZcMULQltuw==",
   "success": true,
   "projectFilePath": "C:\\Users\\ailto\\Desktop\\Programação\\filmesAPI\\FilmesAPI\\FilmesAPI.csproj",
   "expectedPackageFiles": [
@@ -117,8 +117,7 @@
     "C:\\Users\\ailto\\.nuget\\packages\\system.threading.tasks.extensions\\4.3.0\\system.threading.tasks.extensions.4.3.0.nupkg.sha512",
     "C:\\Users\\ailto\\.nuget\\packages\\system.threading.timer\\4.3.0\\system.threading.timer.4.3.0.nupkg.sha512",
     "C:\\Users\\ailto\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
-    "C:\\Users\\ailto\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\ailto\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.17\\microsoft.netcore.app.host.win-x64.5.0.17.nupkg.sha512"
+    "C:\\Users\\ailto\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512"
   ],
   "logs": []
 }
